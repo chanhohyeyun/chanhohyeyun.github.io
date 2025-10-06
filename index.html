@@ -1564,27 +1564,26 @@ function zoomGallOpen(imgNumb) {
   </p>
 <script>
 $(document).ready(function() {
-    var today = new Date();
-    var yyyy = today.getFullYear();
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0~11
-    var dd = String(today.getDate()).padStart(2, '0');
-    var todayStr = yyyy + '-' + mm + '-' + dd;
-  wdDday(todayStr,'2026-01-10');
-});
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var dd = String(today.getDate()).padStart(2, '0');
+  var todayStr = yyyy + '-' + mm + '-' + dd;
 
-	function wdDday(t, w) {
-  var dat1 = new Date(t);
-  var dat2 = new Date(w);
+  var dat1 = new Date(todayStr);
+  var dat2 = new Date('2026-01-10');
   var diff = dat2 - dat1;
-  var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+  var currDay = 24 * 60 * 60 * 1000; // 1일 = 밀리초
 
   if (dat2 < dat1) {
     $('#wd_d-day').text("이 지났습니다");
   } else if (dat2 > dat1) {
-    $('#wd_d-day').text(" " + parseInt(diff / currDay) + "일 전");
-  } else if (dat2 = dat1) {
+    $('#wd_d-day').text(parseInt(diff / currDay) + "일 전");
+  } else if (dat2.getTime() === dat1.getTime()) {
     $('#wd_d-day').text("이 오늘입니다");
   }
+});
+
 </script>
 
 	
