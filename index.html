@@ -2512,5 +2512,43 @@ $(function(){
         window.addEventListener('gesturestart', blurImages);
         window.addEventListener('gestureend', checkZoomLevel);
     </script>
+	<script type="text/javascript">
+  // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+  Kakao.init('bab62872fb491fcb6aa58caca2f4f9e8');
+  // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+  Kakao.Share.createDefaultButton({
+    container: '#kakao-link-btn',
+    objectType: 'location',
+    address: '경기 성남시 분당구 판교역로226번길 16',
+    addressTitle: '웨딩홀',
+    content: {
+      title: '',
+      description: '2026년 01월 10일 PM 01시 00분',
+      imageUrl: 'https://directwedcard.com/cf_carddata/dlsvlsslxm/chanhohyeyoon/share_img/',
+      link: {
+        mobileWebUrl: 'https://directwedcard.com/chanhohyeyoon',
+        webUrl: 'https://directwedcard.com/chanhohyeyoon'
+      }
+    },
+    buttons: [
+      {
+        title: '청첩장 보기',
+        link: {
+          mobileWebUrl: 'https://directwedcard.com/chanhohyeyoon',
+          webUrl: 'https://directwedcard.com/chanhohyeyoon',
+        },
+      },
+    ]
+  });
+
+  function navi(){
+    Kakao.Navi.start({
+        name: "경기 성남시 분당구 판교역로226번길 16",
+        x: 127.111455922512,
+        y: 37.4005276924905,
+        coordType: 'wgs84'
+    });
+  }
+</script>
 </body>
 </html>
