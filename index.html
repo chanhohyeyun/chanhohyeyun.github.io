@@ -47,6 +47,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bab62872fb491fcb6aa58caca2f4f9e8"></script>
 
 <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 <style>
@@ -1571,13 +1572,43 @@ function zoomGallOpen(imgNumb) {
         
 
 
-
+         <input type="hidden" id="wd_xpos" name="wd_xpos" value="127.111455922512" readonly="">
+<input type="hidden" id="wd_ypos" name="wd_ypos" value="37.4005276924905" readonly="">
 		<div class="map_wrapper anibox">
 
             <!-- 네이버지도 -->
-                            <div id="map" style=' pointer-events: none;'></div>
+           <div id="map_kakao" style='pointer-events: none;'></div>
                             
             
+<script type="text/javascript">
+$(function(){
+  var map_width	= $(window).width();
+  var map_height = ($(window).width() / 100) * 70;
+
+  var mapContainer = document.getElementById('map_kakao'), // 지도를 표시할 div
+      mapOption = {
+          center: new kakao.maps.LatLng($('#wd_ypos').val(), $('#wd_xpos').val()), // 지도의 중심좌표
+          level: 2, // 지도의 확대 레벨
+          mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+      };
+
+  // 지도를 생성한다
+   var map = new kakao.maps.Map(mapContainer, mapOption);
+
+   // 마커가 표시될 위치입니다
+var markerPosition  = new kakao.maps.LatLng($('#wd_ypos').val(), $('#wd_xpos').val());
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+   position: markerPosition,
+   draggable : true // 마커를 드래그 가능하도록 설정한다
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+});
+
+</script>
 
             
 
