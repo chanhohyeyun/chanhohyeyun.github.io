@@ -1,1 +1,88 @@
-.input-focused{outline:solid;outline-width:3px;outline-color:#72bbdf}.title-font-kr{color:#b99493;font-size:1.3rem;font-weight:600}.title-font-en{color:#b99493;font-size:1.8rem;font-weight:700}.kr{font-family:"Noto Serif KR",serif;font-display:block;color:#434343;word-break:keep-all}.en{font-family:Cormorant Garamond,serif;font-weight:500;font-style:normal;font-display:block;color:#434343}.en-sacramento{font-family:Sacramento,serif;font-weight:400;font-style:normal;color:#434343}:root{font-size:.9375em}@media (min-width: 381px) and (max-width: 410px){:root{font-size:1em}}@media (min-width: 411px){:root{font-size:1.0625em}}*,*:before,*:after{box-sizing:border-box}*{margin:0}html{-webkit-text-size-adjust:100%}html,body{height:100%}body{line-height:1.5;-webkit-font-smoothing:antialiased;background-color:#efeae4}body{opacity:0;transition:opacity .5s ease-in}body.loaded{opacity:1}img,picture,video,canvas{display:block;max-width:100%}input,button,textarea,select{font:inherit}input[type=text]{-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}button,input[type=submit],input[type=reset]{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;outline:inherit}section.cover,section.letter,section.rsvp,section.gallery,section.calendar,section.location{max-width:600px;margin:auto}
+.input-focused {
+  outline: solid;
+  outline-width: 3px;
+  outline-color: #72bbdf;
+}
+
+.title-font-kr {
+  color: #b99493;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.title-font-en {
+  color: #b99493;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.kr {
+  font-family: "Noto Serif KR", serif;
+  font-display: block;
+  color: #434343;
+  word-break: keep-all;
+}
+
+.en {
+  font-family: Cormorant Garamond, serif;
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+  color: #434343;
+}
+
+.en-sacramento {
+  font-family: Sacramento, serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #434343;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+img, picture, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+input[type=text] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+button, input[type=submit], input[type=reset] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+section.cover, section.letter, section.rsvp, section.gallery, section.calendar, section.location {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* body와 :root 관련 스타일 제거됨 */
