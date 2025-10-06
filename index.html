@@ -1557,12 +1557,13 @@ function zoomGallOpen(imgNumb) {
         </div>
     </div>
         
-  <p class="dday_inner remain" style="display:inline-block;">
-    <span data-name="groom_name">신랑성함</span>
+  <p class="dday_inner remain" style="display:inline-block; text-align: center; ">
+    <span data-name="groom_name">찬호</span>
     <i class="xi-heart"></i>
-    <span data-name="bride_name">신부성함</span> 의 결혼식<span id="wd_d-day"></span>
+    <span data-name="bride_name">❤️혜윤</span> 의 결혼식<span id="wd_d-day"></span>
   </p>
 <script>
+	
 $(document).ready(function() {
   var today = new Date();
   var yyyy = today.getFullYear();
@@ -1578,7 +1579,7 @@ $(document).ready(function() {
   if (dat2 < dat1) {
     $('#wd_d-day').text("이 지났습니다");
   } else if (dat2 > dat1) {
-    $('#wd_d-day').text(parseInt(diff / currDay) + "일 전");
+    $('#wd_d-day').text(parseInt(diff / currDay) + "일 전 입니다.");
   } else if (dat2.getTime() === dat1.getTime()) {
     $('#wd_d-day').text("이 오늘입니다");
   }
