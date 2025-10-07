@@ -1205,7 +1205,7 @@ $("#tel_popup .x_button").click(function(){
 
         
         <div id="intro-ment-area">
-            <p>새해의 첫 달,</p><p>희망과 설렘을 담아</p><p>결혼 소식을 전합니다.</p><p>&nbsp;</p><p>소중한 걸음 하시어</p><p></p>저희의 새로운 시작을 함께</p><p>축복해 주시면 감사하겠습니다.</p> </div>
+            <p>새해의 첫 달,</p><p>희망과 설렘을 담아</p><p>결혼 소식을 전합니다.</p><p>&nbsp;</p><p>소중한 걸음 하시어</p><p></p>저희의 새로운 시작을</p><p>함께 축복해 주시면 감사하겠습니다.</p> </div>
 
     </div>
 
@@ -1227,6 +1227,87 @@ $("#tel_popup .x_button").click(function(){
 
 </div>
 
+	   <style>
+		.dday_inner.remain {
+			text-align: center;
+			font-size: 1.5rem;
+		}
+
+</style>
+<div class="calanderSection sectionMg layer anibox clearfix dday">
+
+        <div class="calwrap">
+        <div class="f20 caltit" style=" text-align: center;">
+
+            <div class="caltit_tit">
+                2026.01.10
+            </div>
+            <div class="caltit_add">
+                (토)
+                                                            오후
+                                        03시
+
+                    30분
+                            </div>
+        </div>
+
+        <div class="calander_warpper">
+			<div class="f20 caltit" style=" text-align: center; font-size: 2.5rem; color: #b27085;">
+                01
+            </div>
+            <table class="calander" id="calander">
+                <thead>
+                    <tr>
+                        <th>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th>토</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<div style="text-align: center;">
+  <p class="dday_inner remain">
+    <span data-name="groom_name">찬호</span>
+    <i class="xi-heart"></i>
+    <span data-name="bride_name">❤️혜윤</span> 의 결혼식<span id="wd_d-day"></span>
+  </p>
+</div>
+
+<script>
+	
+$(document).ready(function() {
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var dd = String(today.getDate()).padStart(2, '0');
+  var todayStr = yyyy + '-' + mm + '-' + dd;
+
+  var dat1 = new Date(todayStr);
+  var dat2 = new Date('2026-01-10');
+  var diff = dat2 - dat1;
+  var currDay = 24 * 60 * 60 * 1000; // 1일 = 밀리초
+
+  if (dat2 < dat1) {
+    $('#wd_d-day').text("이 지났습니다");
+  } else if (dat2 > dat1) {
+    $('#wd_d-day').text(parseInt(diff / currDay) + "일 전 입니다.");
+  } else if (dat2.getTime() === dat1.getTime()) {
+    $('#wd_d-day').text("이 오늘입니다");
+  }
+});
+
+</script>
+
+	
+</div>
 
 
 
@@ -1236,7 +1317,7 @@ $("#tel_popup .x_button").click(function(){
 <div class="sectionHead anibox"  style="padding: 10px 0px 10px 0px">
     <div class="enstr">GALLERY</div>
     <!-- <span class="name">웨딩 갤러리</span> -->
-<!-- </div> --> -->
+<!-- </div> --> 
 
 
     <!--<div class="pic_0_del" style="height: 100px;"></div>-->
@@ -1529,84 +1610,7 @@ function zoomGallOpen(imgNumb) {
         height: 100%;
     }
 </style>
-    <style>
-		.dday_inner.remain {
-			text-align: center;
-			font-size: 1.5rem;
-		}
-
-</style>
-<div class="calanderSection sectionMg layer anibox clearfix dday">
-
-        <div class="calwrap">
-        <div class="f20 caltit" style=" text-align: center;">
-
-            <div class="caltit_tit">
-                2026.01.10
-            </div>
-            <div class="caltit_add">
-                토요일
-                                                            오후
-                                        3시
-
-                    30분
-                            </div>
-        </div>
-
-        <div class="calander_warpper">
-			<div class="f20 caltit" style=" text-align: center; font-size: 2.5rem; color: #b27085;">
-                01
-            </div>
-            <table class="calander" id="calander">
-                <thead>
-                    <tr>
-                        <th>일</th>
-                        <th>월</th>
-                        <th>화</th>
-                        <th>수</th>
-                        <th>목</th>
-                        <th>금</th>
-                        <th>토</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-    </div>
-        
-  <p class="dday_inner remain" style="display:inline-block;">
-    <span data-name="groom_name">찬호</span>
-    <i class="xi-heart"></i>
-    <span data-name="bride_name">❤️혜윤</span> 의 결혼식<span id="wd_d-day"></span>
-  </p>
-<script>
-	
-$(document).ready(function() {
-  var today = new Date();
-  var yyyy = today.getFullYear();
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var dd = String(today.getDate()).padStart(2, '0');
-  var todayStr = yyyy + '-' + mm + '-' + dd;
-
-  var dat1 = new Date(todayStr);
-  var dat2 = new Date('2026-01-10');
-  var diff = dat2 - dat1;
-  var currDay = 24 * 60 * 60 * 1000; // 1일 = 밀리초
-
-  if (dat2 < dat1) {
-    $('#wd_d-day').text("이 지났습니다");
-  } else if (dat2 > dat1) {
-    $('#wd_d-day').text(parseInt(diff / currDay) + "일 전 입니다.");
-  } else if (dat2.getTime() === dat1.getTime()) {
-    $('#wd_d-day').text("이 오늘입니다");
-  }
-});
-
-</script>
-
-	
-</div>
+ 
     <div class="sectionMg layer layer03 ly_waytocome clearfix waytocomeSection">
 
 
