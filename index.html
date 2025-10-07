@@ -1516,6 +1516,10 @@ function zoomGallOpen(imgNumb) {
     }
 </style>
     <style>
+		.dday_inner remain {
+			text-align: center;
+			font-size: 1.5rem;
+		}
 
 </style>
 <div class="calanderSection sectionMg layer anibox clearfix dday">
@@ -1536,7 +1540,7 @@ function zoomGallOpen(imgNumb) {
         </div>
 
         <div class="calander_warpper">
-			<div class="f20 caltit" style=" text-align: center; color: #f79e9e;">
+			<div class="f20 caltit" style=" text-align: center; font-size: 2.5rem; color: #b27085;">
                 01
             </div>
             <table class="calander" id="calander">
@@ -1557,7 +1561,7 @@ function zoomGallOpen(imgNumb) {
         </div>
     </div>
         
-  <p class="dday_inner remain" style="display:inline-block; text-align: center; ">
+  <p class="dday_inner remain" style="display:inline-block;">
     <span data-name="groom_name">찬호</span>
     <i class="xi-heart"></i>
     <span data-name="bride_name">❤️혜윤</span> 의 결혼식<span id="wd_d-day"></span>
@@ -2085,7 +2089,7 @@ $(document).ready(function(){
 
         $.ajax({
             type : 'get',
-            data : {"date" : '2025-01-01'},
+            data : {"date" : '2026-01-01'},
             url : '/holiday',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             success : function(data){
