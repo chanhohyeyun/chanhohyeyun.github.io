@@ -1966,9 +1966,51 @@ $(document).ready(function(){
 
 </div>
             
-    <!--<div class="layer clearfix" style="height: 50px;"></div>-->
+    <div class="layer clearfix" style="height: 50px;"></div>
 
+<div class="offset_8 offset">
+  <div class="guest_book_inner inner_padding" data-type="guest_book1" style="opacity: 1; margin-top: 0px;">
+    <p class="section_tit theme_1_color">방명록</p>
+    <div class="book_box"><div class="book_inner book_inner42153"><div class="book_txt"><p><span class="from_em theme_1_color">FROM.</span> test</p><span>test</span></div><div class="book_mark"><span class="book_date">2025-10-08 12:10:27</span><span class="book_del" onclick="book_del_ac(42153);"><i class="xi-close-thin"></i></span></div></div>
+      
+            <div class="book_btn">
+        <a href="javascript:void(0);" class="book_open theme_1_back"><i class="xi-bars"></i> 전체보기</a>
+        <a href="javascript:void(0);" class="write_open theme_1_back"><i class="xi-pen"></i> 작성하기</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- 방명록 전체보기 -->
+  <div class="guest_black black_back" style="display: none;"></div>
+  <div class="guest_book_pop full pop_front" style="display: none;">
+    <div class="book_wrap">
+      <p class="book_title theme_1_back">방명록 <i class="xi-close-thin book_pop_close"></i></p><div class="book_inner book_inner42153"><div class="book_tit"><p><span class="from_em theme_1_color">FROM.</span> test</p><p><span class="book_date">2025-10-08 12:10:27</span><span class="book_del" onclick="book_del_ac(42153);"><i class="xi-close-thin"></i></span></p></div><p class="pop_txt">test</p></div>
+          </div>
+  </div>
+
+  <!-- 방명록 삭제하기 -->
+  <div class="del_black black_back" style="display: none;"></div>
+  <div class="del_wrap pop_front" style="display: none;">
+    <i class="xi-error"></i>
+    <p>방명록을 <span class="em">삭제</span>하시겠습니까?</p>
+    <input type="password" name="" value="" placeholder="비밀번호를 입력해주세요" id="del_password">
+    <div class="del_btn">
+      <span class="cancel">취소</span>
+      <span class="check" onclick="guest_book_del('chanhohyeyoon');">확인</span>
+    </div>
+  </div>
+
+  <!-- 방명록 작성하기 -->
+  <div class="write_black black_back" style="display: none;"></div>
+  <div class="write_wrap pop_front" style="display: none;">
+    <i class="xi-close-thin write_close"></i>
+    <p class="write_tit">방명록 작성하기</p>
+    <span class="write_sub">방명록을 작성해주세요!</span>
+    <input type="text" name="" value="" placeholder="성함을 입력해주세요." id="write_name">
+    <textarea id="write_txt" rows="4" placeholder="내용을 입력해주세요 (비방, 욕설, 정치적성향의 글은 임의로 삭제되며 형사처벌의 대상이 될 수 있습니다.)" style="resize: none;"></textarea>
+    <span class="write_btn" onclick="guest_book_write('chanhohyeyoon');">작성하기</span>
+  </div>
+</div>
  
 
     <!-- 하단 -->
@@ -2000,6 +2042,8 @@ $(document).ready(function(){
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=tygadk2snl&amp;submodules=geocoder"></script><!-- Naver Map -->
 <script style="text/javascript" src="/css/wd/card.show.js?time=36"></script>
 <script style="text/javascript" src="/css/wd/card.show.opening.js?time=36"></script>
+	
+<script style="text/javascript" src="/css/wd/common_skin.js"></script>
 
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>
     <!-- <script src="https://developers.kakao.com/sdk/js/kakao.min.js" loading="lazy"></script> -->
