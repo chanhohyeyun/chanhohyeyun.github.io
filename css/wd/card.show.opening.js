@@ -168,7 +168,7 @@ function splash_v2(isBgm, isGarland) {
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: "/css/wd/name_v1.json"
+        path: "/css/wd/final_version.json"
     });
 
     // DOMLoaded 이벤트 리스너를 별도로 정의
