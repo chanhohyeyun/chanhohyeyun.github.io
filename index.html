@@ -47,7 +47,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css">
 
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bab62872fb491fcb6aa58caca2f4f9e8"></script><script charset="UTF-8" src="https://t1.daumcdn.net/mapjsapi/js/main/4.4.19/kakao.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
@@ -1367,17 +1367,20 @@ $(document).ready(function() {
 
 
 <!-- PhotoSwipe JS -->
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.umd.min.js"></script>
-
+<script src="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.umd.min.js"></script>
+<script src="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.umd.min.js"></script>
 
 <!-- Lightbox 초기화 -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+  // PhotoSwipe Lightbox 초기화
   const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery',
-    children: 'a',
-    pswpModule: PhotoSwipe
+    gallery: 'body',               // 모든 slide 링크에서 작동하도록
+    children: 'a.slide',           // 클릭할 대상
+    pswpModule: PhotoSwipe,        // PhotoSwipe 본체
+    padding: { top: 20, bottom: 20, left: 20, right: 20 },
+    loop: true,
+    zoom: true
   });
   lightbox.init();
 });
