@@ -9,36 +9,36 @@ $(function() {
   $('.layer_pop').delay(60000).fadeOut('slow');
 });
 
-$(document).ready(function() {
-  $('.card_bgm').click(function() {
-    bgm_player();
-  });
-});
+// $(document).ready(function() {
+//   $('.card_bgm').click(function() {
+//     bgm_player();
+//   });
+// });
 
 
-$(document).ready(function() {
-    var text_length1 = $('.gr_mini_txt').text();
-    var text_length2 = $('.br_mini_txt').text();
-    if(text_length1.length >= 5){
-      $('.gr_mini_txt').css('width', 'auto');
-    }else if(text_length1.length < 5){
-      $('.gr_mini_txt').css('width', '44px');
-    }
+// $(document).ready(function() {
+//     var text_length1 = $('.gr_mini_txt').text();
+//     var text_length2 = $('.br_mini_txt').text();
+//     if(text_length1.length >= 5){
+//       $('.gr_mini_txt').css('width', 'auto');
+//     }else if(text_length1.length < 5){
+//       $('.gr_mini_txt').css('width', '44px');
+//     }
 
-    if(text_length2.length >= 5){
-      $('.br_mini_txt').css('width', 'auto');
-    }else if(text_length2.length < 5){
-      $('.br_mini_txt').css('width', '44px');
-    }
-});
+//     if(text_length2.length >= 5){
+//       $('.br_mini_txt').css('width', 'auto');
+//     }else if(text_length2.length < 5){
+//       $('.br_mini_txt').css('width', '44px');
+//     }
+// });
 
-$(function() {
-  // 혼주에게 연락하기
-  $('.call_box_btn .parents').click(function() {
-    $('.call_black').show();
-    $('.call_pop_down').show();
-  });
-});
+// $(function() {
+//   // 혼주에게 연락하기
+//   $('.call_box_btn .parents').click(function() {
+//     $('.call_black').show();
+//     $('.call_pop_down').show();
+//   });
+// });
 
 // $(document).ready(function() {
 //   $('.call_black').on('click',function(){
@@ -57,266 +57,266 @@ $(function() {
 //   //   $('.call_pop_down').hide();
 //   // });
 // });
-document.addEventListener("DOMContentLoaded", function() {
-  var callBlackElement = document.querySelector(".call_black");
-  var callCloseElement = document.querySelector(".call_close");
+// document.addEventListener("DOMContentLoaded", function() {
+//   var callBlackElement = document.querySelector(".call_black");
+//   var callCloseElement = document.querySelector(".call_close");
 
-  if (callBlackElement && callCloseElement) {
-    callBlackElement.addEventListener("click", function() {
-      hideElements(".call_black");
-      hideElements(".call_pop_down");
-    });
+//   if (callBlackElement && callCloseElement) {
+//     callBlackElement.addEventListener("click", function() {
+//       hideElements(".call_black");
+//       hideElements(".call_pop_down");
+//     });
 
-    callCloseElement.addEventListener("click", function() {
-      hideElements(".call_black");
-      hideElements(".call_pop_down");
-    });
-  }
-});
+//     callCloseElement.addEventListener("click", function() {
+//       hideElements(".call_black");
+//       hideElements(".call_pop_down");
+//     });
+//   }
+// });
 
-function hideElements(selector) {
-  var elements = document.querySelectorAll(selector);
-  elements.forEach(function(element) {
-    element.style.display = "none";
-  });
-}
+// function hideElements(selector) {
+//   var elements = document.querySelectorAll(selector);
+//   elements.forEach(function(element) {
+//     element.style.display = "none";
+//   });
+// }
 
-$(function() {
-  // 계좌 접었다 펴기
-  $('.account_tit').click(function() {
-    // $(this).toggleClass('on').next().toggleClass('on');
-    $(this).siblings().slideToggle();
-    $(this).toggleClass('on').next().toggleClass('on');
-  });
-
-
-  function copyToClipboard(val) {
-    var t = document.createElement("textarea");
-    document.body.appendChild(t);
-    t.value = val;
-    t.select();
-    document.execCommand('copy');
-    document.body.removeChild(t);
-  }
-
-  $('#copybtn1').click(function() {
-    var accountType = $('#type').val();
-    if (accountType == '1') {
-      var account = $('#gr_account').val();
-      if (!account) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType == '0') {
-      var account = $('#skin_gr_account').val();
-      if (!account) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
-
-  $('#copybtn2').click(function() {
-    var accountType2 = $('#type').val();
-    if (accountType2 == '1') {
-      var account2 = $('#gr_pa_account').val();
-      if (!account2) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account2);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType2 == '0') {
-      var account2 = $('#skin_gr_pa_account').val();
-      if (!account2) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account2);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
-  $('#copybtn3').click(function() {
-    var accountType3 = $('#type').val();
-    if (accountType3 == '1') {
-      var account3 = $('#gr_pa2_account').val();
-      if (!account3) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account3);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType3 == '0') {
-      var account3 = $('#skin_gr_pa2_account').val();
-      if (!account3) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account3);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
-
-  $('#copybtn4').click(function() {
-    var accountType4 = $('#type').val();
-    if (accountType4 == '1') {
-      var account4 = $('#br_account').val();
-      if (!account4) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account4);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType4 == '0') {
-      var account4 = $('#skin_br_account').val();
-      if (!account4) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account4);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
-
-  $('#copybtn5').click(function() {
-    var accountType5 = $('#type').val();
-    if (accountType5 == '1') {
-      var account5 = $('#br_pa_account').val();
-      if (!account5) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account5);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType5 == '0') {
-      var account5 = $('#skin_br_pa_account').val();
-      if (!account5) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account5);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
-  $('#copybtn6').click(function() {
-    var accountType6 = $('#type').val();
-    if (accountType6 == '1') {
-      var account6 = $('#br_pa2_account').val();
-      if (!account6) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account6);
-        alert('계좌번호를 복사하였습니다');
-      }
-    } else if (accountType6 == '0') {
-      var account6 = $('#skin_br_pa2_account').val();
-      if (!account6) {
-        alert('계좌번호를 이용하지 않습니다.');
-      } else {
-        copyToClipboard(account6);
-        alert('계좌번호를 복사하였습니다');
-      }
-    }
-  });
+// $(function() {
+//   // 계좌 접었다 펴기
+//   $('.account_tit').click(function() {
+//     // $(this).toggleClass('on').next().toggleClass('on');
+//     $(this).siblings().slideToggle();
+//     $(this).toggleClass('on').next().toggleClass('on');
+//   });
 
 
-  //url 복사
-  $('.url_btn').click(function() {
-    var urlType = $('#type').val();
-    if (urlType == '1') {
-      var editor_url = $('#card_id').val();
-      if (!editor_url) {
-        alert('주소를 입력하지 않았습니다.');
-      } else {
-        copyToClipboard("https://directwedcard.com/" + editor_url);
-        alert('주소를 복사하였습니다');
-      }
-    } else if (urlType == '0') {
-      var skin_url = $('#skin_id').val();
-      if (!skin_url) {
-        alert('주소를 입력하지 않았습니다.');
-      } else {
-        copyToClipboard("https://directwedcard.com/" + skin_url);
-        alert('주소를 복사하였습니다');
-      }
-    }
-  })
-});
+//   function copyToClipboard(val) {
+//     var t = document.createElement("textarea");
+//     document.body.appendChild(t);
+//     t.value = val;
+//     t.select();
+//     document.execCommand('copy');
+//     document.body.removeChild(t);
+//   }
+
+//   $('#copybtn1').click(function() {
+//     var accountType = $('#type').val();
+//     if (accountType == '1') {
+//       var account = $('#gr_account').val();
+//       if (!account) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType == '0') {
+//       var account = $('#skin_gr_account').val();
+//       if (!account) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
+
+//   $('#copybtn2').click(function() {
+//     var accountType2 = $('#type').val();
+//     if (accountType2 == '1') {
+//       var account2 = $('#gr_pa_account').val();
+//       if (!account2) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account2);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType2 == '0') {
+//       var account2 = $('#skin_gr_pa_account').val();
+//       if (!account2) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account2);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
+//   $('#copybtn3').click(function() {
+//     var accountType3 = $('#type').val();
+//     if (accountType3 == '1') {
+//       var account3 = $('#gr_pa2_account').val();
+//       if (!account3) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account3);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType3 == '0') {
+//       var account3 = $('#skin_gr_pa2_account').val();
+//       if (!account3) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account3);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
+
+//   $('#copybtn4').click(function() {
+//     var accountType4 = $('#type').val();
+//     if (accountType4 == '1') {
+//       var account4 = $('#br_account').val();
+//       if (!account4) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account4);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType4 == '0') {
+//       var account4 = $('#skin_br_account').val();
+//       if (!account4) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account4);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
+
+//   $('#copybtn5').click(function() {
+//     var accountType5 = $('#type').val();
+//     if (accountType5 == '1') {
+//       var account5 = $('#br_pa_account').val();
+//       if (!account5) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account5);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType5 == '0') {
+//       var account5 = $('#skin_br_pa_account').val();
+//       if (!account5) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account5);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
+//   $('#copybtn6').click(function() {
+//     var accountType6 = $('#type').val();
+//     if (accountType6 == '1') {
+//       var account6 = $('#br_pa2_account').val();
+//       if (!account6) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account6);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     } else if (accountType6 == '0') {
+//       var account6 = $('#skin_br_pa2_account').val();
+//       if (!account6) {
+//         alert('계좌번호를 이용하지 않습니다.');
+//       } else {
+//         copyToClipboard(account6);
+//         alert('계좌번호를 복사하였습니다');
+//       }
+//     }
+//   });
 
 
-$(function() {
-  // 참석여부 끄기
-  $('.check_attend').click(function() {
-    $('.attend_black').show();
-    $('.attend_pop_wrap').show();
-  });
+//   //url 복사
+//   $('.url_btn').click(function() {
+//     var urlType = $('#type').val();
+//     if (urlType == '1') {
+//       var editor_url = $('#card_id').val();
+//       if (!editor_url) {
+//         alert('주소를 입력하지 않았습니다.');
+//       } else {
+//         copyToClipboard("https://directwedcard.com/" + editor_url);
+//         alert('주소를 복사하였습니다');
+//       }
+//     } else if (urlType == '0') {
+//       var skin_url = $('#skin_id').val();
+//       if (!skin_url) {
+//         alert('주소를 입력하지 않았습니다.');
+//       } else {
+//         copyToClipboard("https://directwedcard.com/" + skin_url);
+//         alert('주소를 복사하였습니다');
+//       }
+//     }
+//   })
+// });
 
-  $('.attend_black').click(function() {
-    $('.attend_black').hide();
-    $('.attend_pop_wrap').hide();
-  });
 
-  $('.attend_close').click(function() {
-    $('.attend_black').hide();
-    $('.attend_pop_wrap').hide();
-  });
+// $(function() {
+//   // 참석여부 끄기
+//   $('.check_attend').click(function() {
+//     $('.attend_black').show();
+//     $('.attend_pop_wrap').show();
+//   });
 
-  //체크 박스 선택시 숨김
-  $("input:radio[name=invite_check]").change(function() {
-    var card_check = $(this).val();
-    if (card_check == 'T') {
-      $('.delivery_box').show();
-    } else {
-      $('.delivery_box').hide();
-    }
-  });
+//   $('.attend_black').click(function() {
+//     $('.attend_black').hide();
+//     $('.attend_pop_wrap').hide();
+//   });
 
-  $("#btn_address").click(function() {
-    new daum.Postcode({
-      oncomplete: function(data) {
-        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+//   $('.attend_close').click(function() {
+//     $('.attend_black').hide();
+//     $('.attend_pop_wrap').hide();
+//   });
 
-        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-        var fullAddr = ''; // 최종 주소 변수
-        var extraAddr = ''; // 조합형 주소 변수
+//   //체크 박스 선택시 숨김
+//   $("input:radio[name=invite_check]").change(function() {
+//     var card_check = $(this).val();
+//     if (card_check == 'T') {
+//       $('.delivery_box').show();
+//     } else {
+//       $('.delivery_box').hide();
+//     }
+//   });
 
-        // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-          fullAddr = data.roadAddress;
+//   $("#btn_address").click(function() {
+//     new daum.Postcode({
+//       oncomplete: function(data) {
+//         // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-        } else { // 사용자가 지번 주소를 선택했을 경우(J)
-          fullAddr = data.jibunAddress;
-        }
+//         // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+//         // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+//         var fullAddr = ''; // 최종 주소 변수
+//         var extraAddr = ''; // 조합형 주소 변수
 
-        // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
-        if (data.userSelectedType === 'R') {
-          //법정동명이 있을 경우 추가한다.
-          if (data.bname !== '') {
-            extraAddr += data.bname;
-          }
-          // 건물명이 있을 경우 추가한다.
-          if (data.buildingName !== '') {
-            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-          }
-          // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-          fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
-        }
+//         // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+//         if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+//           fullAddr = data.roadAddress;
 
-        // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        document.getElementById('delivery_addr1').value = data.zonecode; //5자리 새우편번호 사용
-        document.getElementById('delivery_addr2').value = fullAddr;
+//         } else { // 사용자가 지번 주소를 선택했을 경우(J)
+//           fullAddr = data.jibunAddress;
+//         }
 
-        // 커서를 상세주소 필드로 이동한다.
-        document.getElementById('delivery_addr3').focus();
-      }
-    }).open();
-  });
-});
+//         // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+//         if (data.userSelectedType === 'R') {
+//           //법정동명이 있을 경우 추가한다.
+//           if (data.bname !== '') {
+//             extraAddr += data.bname;
+//           }
+//           // 건물명이 있을 경우 추가한다.
+//           if (data.buildingName !== '') {
+//             extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+//           }
+//           // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+//           fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+//         }
+
+//         // 우편번호와 주소 정보를 해당 필드에 넣는다.
+//         document.getElementById('delivery_addr1').value = data.zonecode; //5자리 새우편번호 사용
+//         document.getElementById('delivery_addr2').value = fullAddr;
+
+//         // 커서를 상세주소 필드로 이동한다.
+//         document.getElementById('delivery_addr3').focus();
+//       }
+//     }).open();
+//   });
+// });
 
 function guest_book_del(ci) {
   if ($('#del_password').val() == '') {
@@ -596,118 +596,118 @@ $(function() {
 });
 
 
-function bgm_player() {
-  var bgm = document.getElementById("skin_bgm");
-    bgm.muted = false;
-  if (bgm.paused) {
-    $(".card_bgm").find('img').attr("src", "/card/skin/img/pause.svg");
-    bgm.play();
-  } else {
-    $(".card_bgm").find('img').attr("src", "/card/skin/img/play.svg");
-    bgm.pause();
-  }
-}
+// function bgm_player() {
+//   var bgm = document.getElementById("skin_bgm");
+//     bgm.muted = false;
+//   if (bgm.paused) {
+//     $(".card_bgm").find('img').attr("src", "/card/skin/img/pause.svg");
+//     bgm.play();
+//   } else {
+//     $(".card_bgm").find('img').attr("src", "/card/skin/img/play.svg");
+//     bgm.pause();
+//   }
+// }
 
-function kCalendar(id, date) {
-  var kCalendar = document.getElementById(id);
-
-
-  if (typeof(date) !== 'undefined') {
-    date = date.split('-');
-    date[1] = date[1] - 1;
-    date = new Date(date[0], date[1], date[2]);
-  } else {
-    var date = new Date();
-  }
-
-  var currentYear = date.getFullYear();
-  //년도를 구함
-
-  var currentMonth = date.getMonth() + 1;
-  //연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
-
-  var currentDate = date.getDate();
-  //오늘 일자.
-
-  date.setDate(1);
-  var currentDay = date.getDay();
-  //이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
-
-  var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
-  var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-  if ((currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0)
-    lastDate[1] = 29;
-  //각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
-
-  var currentLastDate = lastDate[currentMonth - 1];
-  var week = Math.ceil((currentDay + currentLastDate) / 7);
-  //총 몇 주인지 구함.
-
-  if (currentMonth != 1)
-    var prevDate = currentYear + '-' + (currentMonth - 1) + '-' + currentDate;
-  else
-    var prevDate = (currentYear - 1) + '-' + 12 + '-' + currentDate;
-  //만약 이번달이 1월이라면 1년 전 12월로 출력.
-
-  if (currentMonth != 12)
-    var nextDate = currentYear + '-' + (currentMonth + 1) + '-' + currentDate;
-  else
-    var nextDate = (currentYear + 1) + '-' + 1 + '-' + currentDate;
-  //만약 이번달이 12월이라면 1년 후 1월로 출력.
+// function kCalendar(id, date) {
+//   var kCalendar = document.getElementById(id);
 
 
-  if (currentMonth < 10)
-    var currentMonth = '0' + currentMonth;
-  //10월 이하라면 앞에 0을 붙여준다.
+//   if (typeof(date) !== 'undefined') {
+//     date = date.split('-');
+//     date[1] = date[1] - 1;
+//     date = new Date(date[0], date[1], date[2]);
+//   } else {
+//     var date = new Date();
+//   }
 
-  var calendar = '';
+//   var currentYear = date.getFullYear();
+//   //년도를 구함
 
-  calendar += '<div id="header">';
-  calendar += '<span id="date">' + currentMonth + '<font>월</font></span>';
-  calendar += '</div>';
-  calendar += '<table border="0" cellspacing="0" cellpadding="0">';
-  calendar += '<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
-  calendar += '<tbody>';
+//   var currentMonth = date.getMonth() + 1;
+//   //연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
 
-  var dateNum = 1 - currentDay;
+//   var currentDate = date.getDate();
+//   //오늘 일자.
 
-  for (var i = 0; i < week; i++) {
-    calendar += '			<tr>';
-    for (var j = 0; j < 7; j++, dateNum++) {
-      if (dateNum < 1 || dateNum > currentLastDate) {
-        calendar += '				<td class="' + dateString[j] + '"> </td>';
-        continue;
-      }
-      if (dateNum == currentDate) {
-        calendar += '				<td class="' + dateString[j] + '"><div class="weddingday theme_1_back">' + dateNum + '</div></td>';
-      } else {
-        calendar += '				<td class="' + dateString[j] + '">' + dateNum + '</td>';
-      }
-    }
-    calendar += '			</tr>';
-  }
-  calendar += '			</tbody>';
-  calendar += '		</table>';
+//   date.setDate(1);
+//   var currentDay = date.getDay();
+//   //이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
 
-  kCalendar.innerHTML = calendar;
-}
+//   var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+//   var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+//   if ((currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0)
+//     lastDate[1] = 29;
+//   //각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
+
+//   var currentLastDate = lastDate[currentMonth - 1];
+//   var week = Math.ceil((currentDay + currentLastDate) / 7);
+//   //총 몇 주인지 구함.
+
+//   if (currentMonth != 1)
+//     var prevDate = currentYear + '-' + (currentMonth - 1) + '-' + currentDate;
+//   else
+//     var prevDate = (currentYear - 1) + '-' + 12 + '-' + currentDate;
+//   //만약 이번달이 1월이라면 1년 전 12월로 출력.
+
+//   if (currentMonth != 12)
+//     var nextDate = currentYear + '-' + (currentMonth + 1) + '-' + currentDate;
+//   else
+//     var nextDate = (currentYear + 1) + '-' + 1 + '-' + currentDate;
+//   //만약 이번달이 12월이라면 1년 후 1월로 출력.
+
+
+//   if (currentMonth < 10)
+//     var currentMonth = '0' + currentMonth;
+//   //10월 이하라면 앞에 0을 붙여준다.
+
+//   var calendar = '';
+
+//   calendar += '<div id="header">';
+//   calendar += '<span id="date">' + currentMonth + '<font>월</font></span>';
+//   calendar += '</div>';
+//   calendar += '<table border="0" cellspacing="0" cellpadding="0">';
+//   calendar += '<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+//   calendar += '<tbody>';
+
+//   var dateNum = 1 - currentDay;
+
+//   for (var i = 0; i < week; i++) {
+//     calendar += '			<tr>';
+//     for (var j = 0; j < 7; j++, dateNum++) {
+//       if (dateNum < 1 || dateNum > currentLastDate) {
+//         calendar += '				<td class="' + dateString[j] + '"> </td>';
+//         continue;
+//       }
+//       if (dateNum == currentDate) {
+//         calendar += '				<td class="' + dateString[j] + '"><div class="weddingday theme_1_back">' + dateNum + '</div></td>';
+//       } else {
+//         calendar += '				<td class="' + dateString[j] + '">' + dateNum + '</td>';
+//       }
+//     }
+//     calendar += '			</tr>';
+//   }
+//   calendar += '			</tbody>';
+//   calendar += '		</table>';
+
+//   kCalendar.innerHTML = calendar;
+// }
 
 
 
-function wdDday(t, w) {
-  var dat1 = new Date(t);
-  var dat2 = new Date(w);
-  var diff = dat2 - dat1;
-  var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+// function wdDday(t, w) {
+//   var dat1 = new Date(t);
+//   var dat2 = new Date(w);
+//   var diff = dat2 - dat1;
+//   var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
 
-  if (dat2 < dat1) {
-    $('#wd_d-day').text("이 지났습니다");
-  } else if (dat2 > dat1) {
-    $('#wd_d-day').text(" " + parseInt(diff / currDay) + "일 전");
-  } else if (dat2 = dat1) {
-    $('#wd_d-day').text("이 오늘입니다");
-  }
-}
+//   if (dat2 < dat1) {
+//     $('#wd_d-day').text("이 지났습니다");
+//   } else if (dat2 > dat1) {
+//     $('#wd_d-day').text(" " + parseInt(diff / currDay) + "일 전");
+//   } else if (dat2 = dat1) {
+//     $('#wd_d-day').text("이 오늘입니다");
+//   }
+// }
 
 // function wdDday(t, w) {
 //   var strDate1 = t;
@@ -770,3 +770,4 @@ function flower_c(uid,idx){
     }
   });
 }
+
