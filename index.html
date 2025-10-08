@@ -1968,50 +1968,135 @@ $(document).ready(function(){
             
     <div class="layer clearfix" style="height: 50px;"></div>
 
-<div class="offset_8 offset">
-  <div class="guest_book_inner inner_padding" data-type="guest_book1" style="opacity: 1; margin-top: 0px;">
-    <p class="section_tit theme_1_color">방명록</p>
-    <div class="book_box"><div class="book_inner book_inner42153"><div class="book_txt"><p><span class="from_em theme_1_color">FROM.</span> test</p><span>test</span></div><div class="book_mark"><span class="book_date">2025-10-08 12:10:27</span><span class="book_del" onclick="book_del_ac(42153);"><i class="xi-close-thin"></i></span></div></div>
-      
-            <div class="book_btn">
-        <a href="javascript:void(0);" class="book_open theme_1_back"><i class="xi-bars"></i> 전체보기</a>
-        <a href="javascript:void(0);" class="write_open theme_1_back"><i class="xi-pen"></i> 작성하기</a>
-      </div>
+<div class="guestbook-container">
+        <h1 class="title">방명록</h1>
+        <p class="subtitle">소중한 마음을 남겨주세요 💌</p>
+        
+        <div class="success-message" id="successMessage">
+            축하 메시지가 등록되었습니다!
+        </div>
+        
+        <form id="guestbookForm">
+            <div class="form-group">
+                <label for="name">이름 *</label>
+                <input type="text" id="name" placeholder="이름을 입력해주세요" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">축하 메시지 *</label>
+                <textarea id="message" placeholder="따뜻한 축하 메시지를 남겨주세요" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                축하 메시지 남기기
+            </button>
+        </form>
+        
+        <div class="messages-container">
+            <h2 class="messages-title">축하 메시지</h2>
+            <div id="messagesList">
+                <div class="loading">메시지를 불러오는 중...</div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- 방명록 전체보기 -->
-  <div class="guest_black black_back" style="display: none;"></div>
-  <div class="guest_book_pop full pop_front" style="display: none;">
-    <div class="book_wrap">
-      <p class="book_title theme_1_back">방명록 <i class="xi-close-thin book_pop_close"></i></p><div class="book_inner book_inner42153"><div class="book_tit"><p><span class="from_em theme_1_color">FROM.</span> test</p><p><span class="book_date">2025-10-08 12:10:27</span><span class="book_del" onclick="book_del_ac(42153);"><i class="xi-close-thin"></i></span></p></div><p class="pop_txt">test</p></div>
-          </div>
-  </div>
-
-  <!-- 방명록 삭제하기 -->
-  <div class="del_black black_back" style="display: none;"></div>
-  <div class="del_wrap pop_front" style="display: none;">
-    <i class="xi-error"></i>
-    <p>방명록을 <span class="em">삭제</span>하시겠습니까?</p>
-    <input type="password" name="" value="" placeholder="비밀번호를 입력해주세요" id="del_password">
-    <div class="del_btn">
-      <span class="cancel">취소</span>
-      <span class="check" onclick="guest_book_del('chanhohyeyoon');">확인</span>
-    </div>
-  </div>
-
-  <!-- 방명록 작성하기 -->
-  <div class="write_black black_back" style="display: none;"></div>
-  <div class="write_wrap pop_front" style="display: none;">
-    <i class="xi-close-thin write_close"></i>
-    <p class="write_tit">방명록 작성하기</p>
-    <span class="write_sub">방명록을 작성해주세요!</span>
-    <input type="text" name="" value="" placeholder="성함을 입력해주세요." id="write_name">
-    <textarea id="write_txt" rows="4" placeholder="내용을 입력해주세요 (비방, 욕설, 정치적성향의 글은 임의로 삭제되며 형사처벌의 대상이 될 수 있습니다.)" style="resize: none;"></textarea>
-    <span class="write_btn" onclick="guest_book_write('chanhohyeyoon');">작성하기</span>
-  </div>
-</div>
- 
+    <script>
+        // Google Apps Script Web App URL (배포 후 받은 URL로 교체)
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5n2TbcZVMZAW77p5TqDPFwqIVAqytPsuEhCf33RcNP5nzOQ02XKWwOWIK5uWRt7a-/exec';
+        
+        // 폼 제출
+        document.getElementById('guestbookForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !message) return;
+            
+            // 버튼 비활성화
+            submitBtn.disabled = true;
+            submitBtn.textContent = '등록 중...';
+            
+            try {
+                // Google Sheets에 데이터 전송
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'add',
+                        name: name,
+                        message: message,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                // 성공 메시지 표시
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // 폼 초기화
+                document.getElementById('guestbookForm').reset();
+                
+                // 메시지 목록 새로고침
+                setTimeout(() => {
+                    loadMessages();
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 2000);
+                
+            } catch (error) {
+                alert('메시지 등록 중 오류가 발생했습니다.');
+                console.error(error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '축하 메시지 남기기';
+            }
+        });
+        
+        // 메시지 목록 불러오기
+        async function loadMessages() {
+            const messagesList = document.getElementById('messagesList');
+            
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=get`);
+                const data = await response.json();
+                
+                if (data.length === 0) {
+                    messagesList.innerHTML = '<div class="loading">아직 등록된 메시지가 없습니다.</div>';
+                    return;
+                }
+                
+                messagesList.innerHTML = '';
+                
+                data.reverse().forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'message-card';
+                    
+                    const date = new Date(item.timestamp);
+                    const dateString = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+                    
+                    card.innerHTML = `
+                        <div class="message-header">
+                            <span class="message-name">${item.name}</span>
+                            <span class="message-date">${dateString}</span>
+                        </div>
+                        <div class="message-text">${item.message}</div>
+                    `;
+                    
+                    messagesList.appendChild(card);
+                });
+                
+            } catch (error) {
+                messagesList.innerHTML = '<div class="loading">메시지를 불러올 수 없습니다.</div>';
+                console.error(error);
+            }
+        }
+        
+        // 페이지 로드시 메시지 불러오기
+        loadMessages();
+    </script>
 
     <!-- 하단 -->
     
