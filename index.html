@@ -1860,7 +1860,6 @@ marker.setMap(map);
                             <li class="li f16">
                     <span class="n f18 ft-gowun-bold">대중교통</span>
                     <p>● • 판교역 1번출구 셔틀버스 10분간격 운행</p>     
-					<p>● • 판교역 1번출구 셔틀버스 10분간격 운행</p>     
 							</li>
                             <li class="li f16">
                     <span class="n f18 ft-gowun-bold">자가용</span>
@@ -2384,26 +2383,27 @@ function initCalander() {
 
     $("#calander tbody").html(c);
 }
-$(document).ready(function(){
-    if($("#calander").is(":visible")) {
-        initCalander();
+	
+// $(document).ready(function(){
+//     if($("#calander").is(":visible")) {
+//         initCalander();
 
-        $.ajax({
-            type : 'get',
-            data : {"date" : '2026-01-01'},
-            url : '/holiday',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            success : function(data){
-                //console.log(data);
+//         $.ajax({
+//             type : 'get',
+//             data : {"date" : '2026-01-01'},
+//             url : '/holiday',
+//             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+//             success : function(data){
+//                 //console.log(data);
 
-                $(data).each(function(idx,val){
-                    //console.log(val.day);
-                    $(".cal_tr_td_"+val.day).css("color", "var(--main-sun-day-color)");
-                });
-            }
-        });
-    }
-});
+//                 $(data).each(function(idx,val){
+//                     //console.log(val.day);
+//                     $(".cal_tr_td_"+val.day).css("color", "var(--main-sun-day-color)");
+//                 });
+//             }
+//         });
+//     }
+// });
 
 
 
