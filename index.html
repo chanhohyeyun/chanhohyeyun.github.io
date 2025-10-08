@@ -1517,8 +1517,16 @@ document.addEventListener('DOMContentLoaded', function () {
     loop: true,
     zoom: false,
 	pinchToZoom: false,     
-    clickToZoom: false 
+    clickToZoom: false,
+	doubleTapAction: false,
+
   });
+
+  lightbox.on('uiRegister', function() {
+    lightbox.pswp?.off('bindEvents');
+  });
+
+	
   lightbox.init();
 });
 </script>
