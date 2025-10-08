@@ -3753,15 +3753,15 @@ ul.wayto .navi_button > span:before {
     left: 0;
     width: 17px;
     height: 17px;
-    background-image: url(/src/img/card/ico_nav03.png);
+    background-image: url(/res/img/ico_nav03.png);
     background-size: 17px auto;
     margin-top: -8.5px;
 }
 ul.wayto .navi_button:nth-child(2) > span:before {
-    background-image: url(/src/img/card/ico_nav02.png);
+    background-image: url(/res/img/ico_nav02.png);
 }
 ul.wayto .navi_button:nth-child(3) > span:before {
-    background-image: url(/src/img/card/ico_nav01.png);
+    background-image: url(/res/img/ico_nav01.png);
 }
 
 
