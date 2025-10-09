@@ -1525,18 +1525,6 @@ document.addEventListener('DOMContentLoaded', function () {
     wheelToZoom: false,
 	allowUserZoom : false
   });
-
-  lightbox.on('uiRegister', () => {
-    lightbox.on('open', () => {
-      const pswp = lightbox.pswp;
-      if (pswp) {
-        // 줌 및 팬 이벤트 모두 제거
-        ['zoomPanStart', 'zoomPan', 'zoomPanEnd', 'doubleTap'].forEach(evt => {
-          pswp.off(evt);
-        });
-      }
-    });
-  });
 	
   lightbox.init();
 	
