@@ -920,7 +920,7 @@ function loading(go) {
             <path d="M16.2431 16.7275L7.75781 8.24219" stroke="#cccccc" stroke-width="1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </a>
-    <div class="in">
+    <!-- <div class="in">
         <div class="container" id="roughMapContainer">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -930,7 +930,7 @@ function loading(go) {
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 <!-- <script src="http://w.theirmood.com/src/swiper/swiper-bundle.min.js?t=36"></script>
@@ -964,7 +964,7 @@ var mySwiper = new Swiper ('#roughMapContainer', {
             <path d="M16.2431 16.7275L7.75781 8.24219" stroke="#cccccc" stroke-width="1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
     </a>
-    <div class="in">
+    <!-- <div class="in">
         <div class="container" id="popNoticeImgWrap">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -974,7 +974,7 @@ var mySwiper = new Swiper ('#roughMapContainer', {
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <script>
     $(".popNoticeImg .x_button").click(function(){
@@ -982,16 +982,16 @@ var mySwiper = new Swiper ('#roughMapContainer', {
         $(".popNoticeImg").removeClass("visible");
     });
 
-    var mySwiper = new Swiper ('#popNoticeImgWrap', {
-        // Optional parameters
-        direction: '',
-        loop: false,
+    // var mySwiper = new Swiper ('#popNoticeImgWrap', {
+    //     // Optional parameters
+    //     direction: '',
+    //     loop: false,
 
-        zoom: {
-            maxRatio: 3,
-            minRatio: 1
-        },
-    })
+    //     zoom: {
+    //         maxRatio: 3,
+    //         minRatio: 1
+    //     },
+    // })
 </script>
 
 
@@ -1522,33 +1522,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   });
 
-lightbox.on('afterInit', (e) => {
-    const pswp = e.detail.instance;
+lightbox.on('open', () => {
+    const pswp = lightbox.pswp; // 이렇게 직접 접근해야 함
 
-    // 확대 제스처, 클릭 확대, 더블탭 확대 전부 막기
+    if (!pswp) return;
+
+    // 줌 동작 완전 차단
     pswp.on('beforeZoomTo', () => false);
-    pswp.on('wheel', (ev) => ev.preventDefault());
-    pswp.on('pointerDown', (ev) => {
-      // 마우스 드래그 확대도 방지
-      ev.preventDefault();
-    });
 
-    // 터치 확대(핀치 줌) 방지
-    pswp.element.style.touchAction = 'none';
+    // 이미지에 포인터 이벤트 허용 → 드래그 가능
+    const applyImgStyles = () => {
+      pswp.element.querySelectorAll('.pswp__img').forEach(img => {
+        img.style.pointerEvents = 'auto';   // 드래그 허용
+        img.style.cursor = 'default';       // 확대 커서 제거
+        img.style.userSelect = 'none';
+      });
+    };
+    applyImgStyles();
+
+    // 슬라이드 바뀔 때마다 다시 적용
+    pswp.on('change', applyImgStyles);
+
+    // 세로 스크롤 허용 + 가로 스와이프 가능
+    pswp.element.style.touchAction = 'pan-y';
   });
 
-  // (선택) 커서도 확대 모양 안 나오게
-  lightbox.on('bindEvents', () => {
-    const imgs = document.querySelectorAll('.pswp__img');
-    imgs.forEach(img => {
-      img.style.cursor = 'default';
-      img.style.pointerEvents = 'none';
-    });
-  });
+  // 커서 스타일 확실히 덮어쓰기
+  const css = document.createElement('style');
+  css.textContent = `
+    .pswp__img { cursor: default !important; }
+    .pswp--zoomed-in .pswp__img { cursor: default !important; }
+  `;
+  document.head.appendChild(css);
 
-	
   lightbox.init();
+	
 });
+	
 </script>
 
 
