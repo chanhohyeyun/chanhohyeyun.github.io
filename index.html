@@ -1534,8 +1534,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	lightbox.on('change', () => {
     const pswp = lightbox.pswp;
     if (!pswp) return;
-    pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0);
-  });
+ 	['zoomPanStart', 'zoomPan', 'zoomPanEnd', 'pointerDown', 'pointerMove', 'pointerUp', 'wheel', 'doubleTap'].forEach(evt => {
+    pswp.off(evt); 
+ });
+
+	  pswp.on('change', () => {
+    if(pswp.currSlide) {
+      pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0); // 항상 100%로
+    }
+  });	
+	
   lightbox.init();
 	
 });
