@@ -1522,8 +1522,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
   });
 
-  lightbox.on('uiRegister', function() {
-    lightbox.pswp?.off('bindEvents');
+lightbox.on('afterInit', (e) => {
+    const pswp = e.detail.instance;
+
+    // 확대 제스처, 클릭 확대, 더블탭 확대 전부 막기
+    pswp.on('beforeZoomTo', () => false);
+    pswp.on('wheel', (ev) => ev.preventDefault());
+    pswp.on('pointerDown', (ev) => {
+      // 마우스 드래그 확대도 방지
+      ev.preventDefault();
+    });
+
+    // 터치 확대(핀치 줌) 방지
+    pswp.element.style.touchAction = 'none';
+  });
+
+  // (선택) 커서도 확대 모양 안 나오게
+  lightbox.on('bindEvents', () => {
+    const imgs = document.querySelectorAll('.pswp__img');
+    imgs.forEach(img => {
+      img.style.cursor = 'default';
+      img.style.pointerEvents = 'none';
+    });
   });
 
 	
