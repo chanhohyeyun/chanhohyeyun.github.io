@@ -4926,6 +4926,12 @@ ul.wayto .navi_button:nth-child(3) > span:before {
     80% {opacity: 0; }
     100% {opacity: 0;}
 }
+
+@keyframes op2_fade_out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 @keyframes op2_overlay {
     0% { opacity: 0.4; }
     25.3% { opacity: 0.4; } /* 01:16 */
