@@ -1518,42 +1518,23 @@ document.addEventListener('DOMContentLoaded', function () {
     zoom: false,
 	pinchToZoom: false,     
     clickToZoom: false,
+	wheelToZoom: false,
 	doubleTapAction: false,
 
   });
+	
+ lightbox.on('afterInit', () => {
+    const pswp = lightbox.pswp;
 
-lightbox.on('open', () => {
-    const pswp = lightbox.pswp; // 이렇게 직접 접근해야 함
-
-    if (!pswp) return;
-
-    // 줌 동작 완전 차단
-    pswp.on('beforeZoomTo', () => false);
-
-    // 이미지에 포인터 이벤트 허용 → 드래그 가능
-    const applyImgStyles = () => {
-      pswp.element.querySelectorAll('.pswp__img').forEach(img => {
-        img.style.pointerEvents = 'auto';   // 드래그 허용
-        img.style.cursor = 'default';       // 확대 커서 제거
-        img.style.userSelect = 'none';
-      });
-    };
-    applyImgStyles();
-
-    // 슬라이드 바뀔 때마다 다시 적용
-    pswp.on('change', applyImgStyles);
-
-    // 세로 스크롤 허용 + 가로 스와이프 가능
-    pswp.element.style.touchAction = 'pan-y';
+    // 확대 및 이동(팬) 이벤트 차단
+    pswp.on('zoomPanStart', e => {
+      e.preventDefault && e.preventDefault();
+    });
+    pswp.on('zoomPan', e => {
+      e.preventDefault && e.preventDefault();
+    });
   });
 
-  // 커서 스타일 확실히 덮어쓰기
-  const css = document.createElement('style');
-  css.textContent = `
-    .pswp__img { cursor: default !important; }
-    .pswp--zoomed-in .pswp__img { cursor: default !important; }
-  `;
-  document.head.appendChild(css);
 
   lightbox.init();
 	
