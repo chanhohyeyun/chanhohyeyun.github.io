@@ -1467,12 +1467,12 @@ $(document).ready(function() {
         <div class="swiper-pagination swiper-opts"></div>
     </div> -->
 <section class="gallery svelte-wnxxjj">
-	<div class="sectionHead anibox"  style="padding: 10px 0px 10px 0px">
+	<div class="sectionHead anibox">
     <div class="enstr">GALLERY</div>
     <!-- <span class="name">웨딩 갤러리</span> -->
 	</div>
 	<div class="header svelte-wnxxjj">
-		<p class="sub-title kr svelte-wnxxjj">사진을 탭하면 더 크게 볼 수 있습니다.</p></div>
+		<p class="sub-title kr svelte-wnxxjj" style= "font-family :Gowun Dodum";>사진을 탭하면 더 크게 볼 수 있습니다.</p></div>
 	<div id="gallery" class="svelte-wnxxjj">
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_1.jpg" data-pswp-width="1200" data-pswp-height="1800">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_1.jpg"></a>
@@ -1507,36 +1507,22 @@ $(document).ready(function() {
 
 <!-- Lightbox 초기화 -->
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
-  // PhotoSwipe Lightbox 초기화
   const lightbox = new PhotoSwipeLightbox({
-    gallery: 'body',               // 모든 slide 링크에서 작동하도록
-    children: 'a.slide',           // 클릭할 대상
-    pswpModule: PhotoSwipe,        // PhotoSwipe 본체
+    gallery: 'body',
+    children: 'a.slide',
+    pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
     loop: true,
-    zoom: false,
-	pinchToZoom: false,     
-    clickToZoom: false,
-	wheelToZoom: false,
-	doubleTapAction: null,
-
-  });
-	
-  lightbox.on('uiRegister', () => {
-    lightbox.on('open', () => {
-      const pswp = lightbox.pswp;
-      if (pswp) {
-        // 줌 및 팬 이벤트 모두 제거
-        ['zoomPanStart', 'zoomPan', 'zoomPanEnd', 'doubleTap'].forEach(evt => {
-          pswp.off(evt);
-        });
-      }
-    });
+    
+    // 이것만으로 충분!
+    maxZoomLevel: 1,
+    initialZoomLevel: 'fit',
+    secondaryZoomLevel: 1,
   });
 
   lightbox.init();
-	
 });
 	
 </script>
