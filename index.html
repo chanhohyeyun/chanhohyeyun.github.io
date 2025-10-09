@@ -1515,11 +1515,19 @@ document.addEventListener('DOMContentLoaded', function () {
     pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
     loop: true,
-    
-    // 이것만으로 충분!
+	
+    // 줌 레벨 고정
     maxZoomLevel: 1,
     initialZoomLevel: 'fit',
     secondaryZoomLevel: 1,
+    
+    // 모든 줌 액션 비활성화
+    zoom: false,
+    pinchToZoom: false,
+    clickToZoom: false,
+    doubleTapAction: false,
+    wheelToZoom: false,
+	allowUserZoom : false,
   });
 
   lightbox.init();
