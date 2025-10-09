@@ -1511,7 +1511,7 @@ $(document).ready(function() {
 	
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = new PhotoSwipeLightbox({
-    gallery: 'body',
+    gallery: '#gallery',
     children: 'a.slide',
     pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
@@ -1528,9 +1528,14 @@ document.addEventListener('DOMContentLoaded', function () {
     clickToZoom: false,
     doubleTapAction: false,
     wheelToZoom: false,
-	allowUserZoom : false,
+	allowUserZoom : false
   });
 
+	lightbox.on('change', () => {
+    const pswp = lightbox.pswp;
+    if (!pswp) return;
+    pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0);
+  });
   lightbox.init();
 	
 });
