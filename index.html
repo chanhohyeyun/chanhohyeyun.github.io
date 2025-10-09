@@ -1505,9 +1505,7 @@ $(document).ready(function() {
 	</div>
 </section>
 
-<!-- Lightbox 초기화 -->
 <script>
-
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = new PhotoSwipeLightbox({
     gallery: 'body',
@@ -1515,16 +1513,47 @@ document.addEventListener('DOMContentLoaded', function () {
     pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
     loop: true,
-    
-    // 이것만으로 충분!
     maxZoomLevel: 1,
     initialZoomLevel: 'fit',
     secondaryZoomLevel: 1,
+    zoom: false,
+    pinchToZoom: false,
+    clickToZoom: false,
+    doubleTapAction: false,
+    wheelToZoom: false,
+  });
+  
+  lightbox.on('afterInit', () => {
+    const pswp = lightbox.pswp;
+    if (pswp && pswp.currSlide) {
+      pswp.currSlide.zoomLevels.initial = 1;
+      pswp.currSlide.zoomLevels.secondary = 1;
+      pswp.currSlide.zoomLevels.max = 1;
+    }
+  });
+  
+  lightbox.on('change', () => {
+    const pswp = lightbox.pswp;
+    if (pswp && pswp.currSlide) {
+      pswp.currSlide.zoomLevels.initial = 1;
+      pswp.currSlide.zoomLevels.secondary = 1;
+      pswp.currSlide.zoomLevels.max = 1;
+      if (pswp.currSlide.currZoomLevel > 1) {
+        pswp.currSlide.zoomTo(1, {x: 0, y: 0}, 0);
+      }
+    }
+  });
+  
+  lightbox.on('zoomPanUpdate', (e) => {
+    const pswp = lightbox.pswp;
+    if (pswp && pswp.currSlide && pswp.currSlide.currZoomLevel > 1) {
+      e.preventDefault();
+      pswp.currSlide.zoomTo(1, {x: 0, y: 0}, 0);
+    }
   });
 
   lightbox.init();
 });
-	
 </script>
 
 
