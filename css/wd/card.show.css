@@ -4879,17 +4879,21 @@ ul.wayto .navi_button:nth-child(3) > span:before {
 .ltt_wrapper.v2 .bg_div { overflow: hidden; width: 100%; height: 100%; position: relative; background: #F9F4EE; top: 0; left: 0; bottom: 0; right: 0; margin: auto;}
 .ltt_wrapper.v2 .overlay-div {position: absolute; top: 0; left: 0; bottom: 0; right: 0;margin: auto; z-index: 11; background: #F9F4EE; width: 100%; height: 100%; opacity: 0.4; }
 .ltt_wrapper.v2 .bg_div > img {position: absolute;top: 0;left: 0; right: 0; margin: auto; object-fit: cover;object-position: center;}
-.ltt_wrapper.v2 .bg_div > .img_01 { z-index: 2; width: 120%; height: 100%; opacity: 1; }
+/* .ltt_wrapper.v2 .bg_div > .img_01 { z-index: 2; width: 120%; height: 100%; opacity: 1; } */
+.ltt_wrapper.v2 .bg_div > .img_01 { z-index: 1; width: 100%; height: 100%; transform: scale(1); opacity: 1; }
 .ltt_wrapper.v2 .bg_div > .img_02 { z-index: 1; width: 100%; height: 100%; transform: scale(1); opacity: 1; }
 
 .ltt_wrapper.v2 .bg_div { opacity: 1; }
 .ltt_wrapper.v2 .overlay-div { opacity: 0.4; }
-.ltt_wrapper.v2 .bg_div > .img_01 { transform: translateX(0%); opacity: 1; }
+/* .ltt_wrapper.v2 .bg_div > .img_01 { transform: translateX(0%); opacity: 1; } */
+.ltt_wrapper.v2 .bg_div > .img_01 { opacity: 1; transform: scale(1); }
 .ltt_wrapper.v2 .bg_div > .img_02 { opacity: 1; transform: scale(1); }
+
 
 .ltt_wrapper.v2.keys .bg_div {  animation: op2_whole_wrap 5.0s linear forwards;  }
 .ltt_wrapper.v2.keys .overlay-div { animation: op2_overlay 5.0s linear forwards; }
-.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_move_x 2.0s linear forwards, op2_move_x_img 5s linear forwards; }
+/* .ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_move_x 2.0s linear forwards, op2_move_x_img 5s linear forwards; } */
+.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_scale_up_img 5s linear forwards, op2_scale_up 5s linear forwards; }
 .ltt_wrapper.v2.keys .bg_div > .img_02 {  animation: op2_scale_up_img 5s linear forwards, op2_scale_up 5s linear forwards; }
 
 .ltt_wrapper.v2 > .opening_v2_text { position: absolute; width: 90%;box-sizing: border-box;margin: auto; left: 0; right: 0; bottom: 4%;z-index: 20; overflow: hidden; background: transparent; aspect-ratio: 1080/500; }
