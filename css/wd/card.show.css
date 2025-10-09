@@ -4887,14 +4887,14 @@ ul.wayto .navi_button:nth-child(3) > span:before {
 .ltt_wrapper.v2 .overlay-div { opacity: 0.4; }
 /* .ltt_wrapper.v2 .bg_div > .img_01 { transform: translateX(0%); opacity: 1; } */
 .ltt_wrapper.v2 .bg_div > .img_01 { opacity: 1; transform: scale(1); }
-.ltt_wrapper.v2 .bg_div > .img_02 { opacity: 1; transform: scale(1); }
+.ltt_wrapper.v2 .bg_div > .img_02 { opacity: 0; transform: scale(1); }
 
 
 .ltt_wrapper.v2.keys .bg_div {  animation: op2_whole_wrap 5.0s linear forwards;  }
 .ltt_wrapper.v2.keys .overlay-div { animation: op2_overlay 5.0s linear forwards; }
 /* .ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_move_x 2.0s linear forwards, op2_move_x_img 5s linear forwards; } */
-.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_scale_up_img 5s linear forwards, op2_fade_out 2s linear forwards; }
-.ltt_wrapper.v2.keys .bg_div > .img_02 {  animation: op2_scale_up_img 5s linear forwards, op2_scale_up 5s linear forwards; }
+.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_scale_up_img 5s linear forwards, op2_fade_out 5s linear forwards; }
+.ltt_wrapper.v2.keys .bg_div > .img_02 {  animation: op2_scale_up_img 1s linear 4s  forwards, op2_scale_up 5s linear forwards; }
 
 .ltt_wrapper.v2 > .opening_v2_text { position: absolute; width: 90%;box-sizing: border-box;margin: auto; left: 0; right: 0; bottom: 4%;z-index: 20; overflow: hidden; background: transparent; aspect-ratio: 1080/500; }
 .ltt_wrapper.v2 > .opening_v2_text svg { margin: auto; top: 0; left: 0; right: 0; bottom: 0; position: absolute; width: 100% !important; height: auto !important; max-width: 600px; }
