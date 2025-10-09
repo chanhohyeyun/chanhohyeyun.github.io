@@ -1448,7 +1448,27 @@ $(document).ready(function() {
 </div>
 
 
+<style>
 
+.pswp--click-to-zoom .pswp__img,
+.pswp--zoom-allowed .pswp__img,
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
+    cursor: default !important;
+    pointer-events: auto !important;
+}
+
+.pswp__zoom-wrap {
+    transform: none !important;
+    transition: none !important;
+}
+
+.pswp__img {
+    transform: none !important;
+    touch-action: pan-y !important;
+}
+</style>
+	
+	
         <div class="sectionMg gallLayerWrapper layer layer03 clearfix">
 <!-- 
 <div class="sectionHead anibox"  style="padding: 10px 0px 10px 0px">
