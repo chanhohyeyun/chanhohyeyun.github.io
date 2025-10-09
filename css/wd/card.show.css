@@ -4893,7 +4893,7 @@ ul.wayto .navi_button:nth-child(3) > span:before {
 .ltt_wrapper.v2.keys .bg_div {  animation: op2_whole_wrap 5.0s linear forwards;  }
 .ltt_wrapper.v2.keys .overlay-div { animation: op2_overlay 5.0s linear forwards; }
 /* .ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_move_x 2.0s linear forwards, op2_move_x_img 5s linear forwards; } */
-.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_scale_up_img 5s linear forwards, op2_scale_up 5s linear forwards; }
+.ltt_wrapper.v2.keys .bg_div > .img_01 {  animation: op2_scale_up_img 5s linear forwards, op2_fade_out 5s linear forwards; }
 .ltt_wrapper.v2.keys .bg_div > .img_02 {  animation: op2_scale_up_img 5s linear forwards, op2_scale_up 5s linear forwards; }
 
 .ltt_wrapper.v2 > .opening_v2_text { position: absolute; width: 90%;box-sizing: border-box;margin: auto; left: 0; right: 0; bottom: 4%;z-index: 20; overflow: hidden; background: transparent; aspect-ratio: 1080/500; }
