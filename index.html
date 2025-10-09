@@ -1511,17 +1511,12 @@ $(document).ready(function() {
 	
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery',
+    gallery: 'body',
     children: 'a.slide',
     pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
     loop: true,
 	
-    // 줌 레벨 고정
-    maxZoomLevel: 1,
-    initialZoomLevel: 'fit',
-    secondaryZoomLevel: 1,
-    
     // 모든 줌 액션 비활성화
     zoom: false,
     pinchToZoom: false,
@@ -1531,18 +1526,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	allowUserZoom : false
   });
 
-	lightbox.on('change', () => {
-    const pswp = lightbox.pswp;
-    if (!pswp) return;
- 	['zoomPanStart', 'zoomPan', 'zoomPanEnd', 'pointerDown', 'pointerMove', 'pointerUp', 'wheel', 'doubleTap'].forEach(evt => {
-    pswp.off(evt); 
- });
-
-	  pswp.on('change', () => {
-    if(pswp.currSlide) {
-      pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0); // 항상 100%로
-    }
-  });	
+  lightbox.on('uiRegister', () => {
+    lightbox.on('open', () => {
+      const pswp = lightbox.pswp;
+      if (pswp) {
+        // 줌 및 팬 이벤트 모두 제거
+        ['zoomPanStart', 'zoomPan', 'zoomPanEnd', 'doubleTap'].forEach(evt => {
+          pswp.off(evt);
+        });
+      }
+    });
+  });
 	
   lightbox.init();
 	
