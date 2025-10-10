@@ -1530,7 +1530,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	  lightbox.on('uiRegister', function() {
     lightbox.pswp.on('zoomPanUpdate', (e) => {
       e.preventDefault(); // 확대 시도 막기
-      lightbox.pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0); // 항상 1배로 유지
+      // lightbox.pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0); // 항상 1배로 유지
     });
   });
 
