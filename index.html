@@ -1526,7 +1526,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 	
   lightbox.init();
-	
+
+	lightbox.on('change', () => {
+    const currSlide = lightbox.pswp.currSlide;
+    if (currSlide && currSlide.container) {
+      const wrap = currSlide.container.querySelector('.pswp__zoom-wrap');
+      if (wrap) {
+        wrap.style.transform = 'translate3d(0px, 0px, 0px) scale3d(1,1,1)';
+      }
+    }
+  });
+
 });
 </script>
 
