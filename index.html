@@ -1516,6 +1516,8 @@ document.addEventListener('DOMContentLoaded', function () {
     pswpModule: PhotoSwipe,
     padding: { top: 20, bottom: 20, left: 20, right: 20 },
     loop: true,
+	zoom:false,
+	pinchToZoom: false,
 	maxSpreadZoom: 1,
     clickToZoom: false,
     doubleTapAction: false,
@@ -1524,6 +1526,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 	
   lightbox.init();
+
+	  lightbox.on('uiRegister', function() {
+    lightbox.pswp.on('zoomPanUpdate', (e) => {
+      e.preventDefault(); // 확대 시도 막기
+      lightbox.pswp.currSlide.zoomTo(1, { x: 0, y: 0 }, 0); // 항상 1배로 유지
+    });
+  });
+
+  // 핀치 제스처 자체 비활성화 (터치 제스처 방지)
+  lightbox.on('change', () => {
+    const pswpEl = document.querySelector('.pswp__scroll-wrap');
+    if (pswpEl) {
+      pswpEl.style.touchAction = 'pan-x pan-y'; // 핀치 제스처 막기
+    }
+  });
 
 });
 </script>
