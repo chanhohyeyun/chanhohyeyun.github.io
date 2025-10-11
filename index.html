@@ -1531,7 +1531,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const pswp = lightbox.pswp;
 
   // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
-  pswp.on('pointerDown', e => e.preventDefault());
+  //pswp.on('pointerDown', e => e.preventDefault());
+
+pswp.on('pointerDown', e => {
+  // 터치가 아닌 멀티 터치(줌)만 막기
+  if (e.touches && e.touches.length > 1) {
+    e.preventDefault();
+  }
+});
+		
   pswp.on('wheel', e => e.preventDefault());
 
   // 2️⃣ PanZoom의 줌 기능 완전 차단
