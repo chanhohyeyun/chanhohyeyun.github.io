@@ -52,18 +52,18 @@ body {
     --dday-color: #964b00;
 }
 :root .theme_emp_color_purple {
-    --main-color: #b27085;
-    --main-v2-color: #b27085;
+    --main-color: #ea7256;
+    --main-v2-color: #ea7256;
 
-    --main-bride-color: #b27085;
+    --main-bride-color: #ea7256;
     --main-groom-color: #0067a390;
 
-    --main-sun-day-color: #b27085;
+    --main-sun-day-color: #ea7256;
 
     --box-border-color: rgb(240, 227, 227);
     --box-font-color: #7b2934;
 
-    --dday-color: #b27085;
+    --dday-color: #ea7256;
 }
 
 
