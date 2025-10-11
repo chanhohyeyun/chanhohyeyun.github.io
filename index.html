@@ -1531,31 +1531,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 	
   lightbox.init();
-	
-// PhotoSwipe 열렸을 때
-  lightbox.on('open', () => {
-    const pswp = lightbox.pswp;
-    const slide = pswp.currSlide;
 
-    // 이미지 중심 기준으로 화면 맞춤 배율 유지
-    if (slide && slide.zoomLevels) {
-      const centerX = slide.width / 2;
-      const centerY = slide.height / 2;
-
-      slide.zoomTo(slide.zoomLevels.fit, { x: centerX, y: centerY }, 0);
-    }
-
-    // 사용자가 확대 시도할 때 강제로 화면 맞춤 유지
-    pswp.on('zoomPanUpdate', (e) => {
-      e.preventDefault();
-      const s = pswp.currSlide;
-      if (s && s.zoomLevels) {
-        const cx = s.width / 2;
-        const cy = s.height / 2;
-        s.zoomTo(s.zoomLevels.fit, { x: cx, y: cy }, 0);
-      }
+lightbox.on('afterInit', () => {
+  const pswpEl = document.querySelector('.pswp');
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('.pswp__zoom-wrap').forEach(el => {
+      el.style.transform = 'none';
+      el.style.transition = 'none';
     });
   });
+  observer.observe(pswpEl, { attributes: true, subtree: true });
+});
 
 });
 </script>
