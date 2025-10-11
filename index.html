@@ -1626,7 +1626,7 @@ function zoomGallOpen(imgNumb) {
     history.pushState(null, null, "#");
 
     g_posY = $(window).scrollTop();
-    // $("html,body").css("overflow", "hidden");
+    $("html,body").css("overflow", "hidden");
 
     $(".zoomGallWrapper").css("display", "block");
 
