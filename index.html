@@ -1533,20 +1533,20 @@ document.addEventListener('DOMContentLoaded', function () {
   // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
   pswp.on('pointerDown', e => e.preventDefault());
 		
-  pswp.on('wheel', e => e.preventDefault());
+  // pswp.on('wheel', e => e.preventDefault());
 
   // 2️⃣ PanZoom의 줌 기능 완전 차단
-  pswp.on('change', () => {
-    pswp.currSlide.panZoom.zoomTo(1); // 항상 1배로 유지
-  });
+  // pswp.on('change', () => {
+  //   pswp.currSlide.panZoom.zoomTo(1); // 항상 1배로 유지
+  // });
 
-  // 3️⃣ transform scale이 바뀌어도 강제로 복원
-  pswp.on('afterZoomTo', () => {
-    const zoomWrap = pswp.currSlide.holder.querySelector('.pswp__zoom-wrap');
-    if (zoomWrap) {
-      zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
-    }
-  });
+  // // 3️⃣ transform scale이 바뀌어도 강제로 복원
+  // pswp.on('afterZoomTo', () => {
+  //   const zoomWrap = pswp.currSlide.holder.querySelector('.pswp__zoom-wrap');
+  //   if (zoomWrap) {
+  //     zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
+  //   }
+  // });
 });
 
 
