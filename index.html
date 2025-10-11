@@ -1532,16 +1532,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	
   lightbox.init();
 
-lightbox.on('afterInit', () => {
-  const pswpEl = document.querySelector('.pswp');
-  const observer = new MutationObserver(() => {
-    document.querySelectorAll('.pswp__zoom-wrap').forEach(el => {
-      el.style.transform = 'none';
-      el.style.transition = 'none';
-    });
-  });
-  observer.observe(pswpEl, { attributes: true, subtree: true });
-});
 
 });
 </script>
