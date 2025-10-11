@@ -1626,7 +1626,7 @@ function zoomGallOpen(imgNumb) {
     history.pushState(null, null, "#");
 
     g_posY = $(window).scrollTop();
-    $("html,body").css("overflow", "hidden");
+    // $("html,body").css("overflow", "hidden");
 
     $(".zoomGallWrapper").css("display", "block");
 
@@ -2648,7 +2648,7 @@ function swipeGallery02() {
             }
         });
                 $("#thumblistid .swiper-slide").click(function(){
-            zoomGallOpen($(this).attr("data-order"));
+            //zoomGallOpen($(this).attr("data-order"));
         });
         
     }else if(imglen==1){
@@ -2662,7 +2662,7 @@ function swipeGallery02() {
         $(".layer01 .title2").css("padding-top", "0px");
     }
 }
-    swipeGallery01();
+    // swipeGallery01();
 
 
 
