@@ -1524,9 +1524,13 @@ document.addEventListener('DOMContentLoaded', function () {
     clickToZoom: false,
     doubleTapAction: false,
     wheelToZoom: false,
+	   ui: {
+      arrowPrev: true,
+      arrowNext: true
+    }
   });
 
-	lightbox.on('afterInit', () => {
+lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
 
   // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
