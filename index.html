@@ -1580,6 +1580,14 @@ lightbox.on('afterInit', () => {
       }
     });
 	
+	lightbox.on('beforeOpen', () => {
+  document.body.style.overflow = 'hidden';
+});
+
+lightbox.on('close', () => {
+  document.body.style.overflow = '';
+});
+	
 	
 });
 
