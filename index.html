@@ -481,7 +481,7 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
 		opacity: 0.005;
   		visibility: hidden !important;
 		}
-		.pswp img{
+		..pswp__img{
     object-fit: cover;
     object-position: 50% 50%;
     cursor: move;
@@ -1549,6 +1549,14 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelector(`body`).classList.add('not-prevent-zoom')
 document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 
+	lightbox.on('beforeOpen', () => {
+  document.body.style.overflow = 'hidden';
+});
+
+lightbox.on('close', () => {
+  document.body.style.overflow = '';
+});
+	
 	
 lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
@@ -1579,14 +1587,6 @@ lightbox.on('afterInit', () => {
         zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
       }
     });
-	
-	lightbox.on('beforeOpen', () => {
-  document.body.style.overflow = 'hidden';
-});
-
-lightbox.on('close', () => {
-  document.body.style.overflow = '';
-});
 	
 	
 });
