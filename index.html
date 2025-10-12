@@ -1535,13 +1535,14 @@ document.addEventListener('DOMContentLoaded', function () {
     clickToZoom: false,
     doubleTapAction: false,
     wheelToZoom: false,
+	allowPanToNext: true, 
   });
 
 lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
 
   // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
-//  pswp.on('pointerDown', e => e.preventDefault());
+ pswp.on('pointerDown', e => e.preventDefault());
   
 // pswp.on('wheel', e => e.preventDefault());
 
@@ -1558,13 +1559,6 @@ lightbox.on('afterInit', () => {
   //   }
   // });
 
-	  pswp.on('zoomPanUpdate', (e) => {
-      if (e && e.panZoom) {
-        // 항상 1배로 고정 (확대 시도시 무시)
-        e.panZoom.currZoomLevel = 1;
-        e.panZoom.zoom = 1;
-      }
-    });
 
     // ✅ 2. afterZoomTo 이벤트에서도 복원
     pswp.on('afterZoomTo', () => {
@@ -1573,14 +1567,6 @@ lightbox.on('afterInit', () => {
         zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
       }
     });
-
-    // ✅ 3. pointer 이벤트 중 두 손가락 입력 막기
-    pswp.on('pointerDown', (e) => {
-      if (e.pointers && e.pointers.length > 1) {
-        e.preventDefault();
-      }
-    });
-
 	
 	
 });
