@@ -1540,23 +1540,43 @@ document.addEventListener('DOMContentLoaded', function () {
 lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
 
-  // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
-  pswp.on('pointerDown', e => e.preventDefault());
+  // // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
+  // pswp.on('pointerDown', e => e.preventDefault());
 		
-  // pswp.on('wheel', e => e.preventDefault());
+  // // pswp.on('wheel', e => e.preventDefault());
 
-  //2️⃣ PanZoom의 줌 기능 완전 차단
-  pswp.on('change', () => {
-    pswp.currSlide.panZoom.zoomTo(1); // 항상 1배로 유지
+  // //2️⃣ PanZoom의 줌 기능 완전 차단
+  // pswp.on('change', () => {
+  //   pswp.currSlide.panZoom.zoomTo(1); // 항상 1배로 유지
+  // });
+
+  // // 3️⃣ transform scale이 바뀌어도 강제로 복원
+  // pswp.on('afterZoomTo', () => {
+  //   const zoomWrap = pswp.currSlide.holder.querySelector('.pswp__zoom-wrap');
+  //   if (zoomWrap) {
+  //     zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
+  //   }
+  // });
+
+  pswp.on('wheel', e => e.preventDefault()); // 마우스 휠 줌 금지
+
+  // ✅ 더블탭 줌 금지
+  pswp.on('doubleTap', e => e.preventDefault());
+
+  // ✅ 핀치 줌 금지 (두 손가락 확대)
+  pswp.on('zoomPan', (e) => {
+    pswp.currSlide.panZoom.zoomTo(1); // 강제로 항상 1배
   });
 
-  // 3️⃣ transform scale이 바뀌어도 강제로 복원
+  // ✅ transform scale 억지로 고정 (안전장치)
   pswp.on('afterZoomTo', () => {
     const zoomWrap = pswp.currSlide.holder.querySelector('.pswp__zoom-wrap');
     if (zoomWrap) {
       zoomWrap.style.transform = zoomWrap.style.transform.replace(/scale3d\([^)]*\)/, 'scale3d(1,1,1)');
     }
   });
+	
+	
 });
 
 
