@@ -1538,11 +1538,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	allowPanToNext: true, 
   });
 
+document.querySelector(`body`).classList.add('not-prevent-zoom')
+document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+
+	
 lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
 
   // 1️⃣ 사용자의 줌 입력(더블탭, 핀치 등) 막기
- pswp.on('pointerDown', e => e.preventDefault());
+// pswp.on('pointerDown', e => e.preventDefault());
   
 // pswp.on('wheel', e => e.preventDefault());
 
@@ -1735,6 +1739,7 @@ function zoomGallOpen(imgNumb) {
 
     }
 
+	
 
 </script>
 
