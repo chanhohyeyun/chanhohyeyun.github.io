@@ -94,7 +94,7 @@
 	width: auto;
 	height: auto;
 }
-
+/* 
 .pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
 	cursor: -webkit-zoom-in;
 	cursor: -moz-zoom-in;
@@ -112,7 +112,7 @@
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-}
+} */
 
 /* :active to override grabbing cursor */
 .pswp--no-mouse-drag.pswp--zoomed-in .pswp__img,
