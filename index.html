@@ -470,7 +470,9 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
             -khtml-user-select: none;
             user-select: none;
             touch-action: pan-y;
-		  touch-action: pan-x pan-y; /* 핀치 줌 완전 차단 */
+		  touch-action: pan-x pan-y;
+			 -webkit-user-drag: none !important;
+  -webkit-touch-callout: none !important;/* 핀치 줌 완전 차단 */
 		}
 		
 
@@ -484,12 +486,15 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
             touch-action: pan-y;
 		}
 		.pswp__content > * {
-		  pointer-events: auto;
+		  pointer-events: none;
 
 		}
 
 		.pswp {
- 		 touch-action: pan-y; /* ✅ 브라우저 기본 핀치 확대 차단 */
+ 		 touch-action: pan-y;
+			 -webkit-user-drag: none !important;
+  			-webkit-touch-callout: none !important;
+			/* ✅ 브라우저 기본 핀치 확대 차단 */
 		}
 		.pswp--touch .pswp__button--arrow {
   			visibility: visible !important;
