@@ -773,17 +773,6 @@ ul.contactus.v2.sub li .t2 .baptismal {
     -webkit-text-stroke: 0 !important;
 }
 
-.guest_title {
-    font-size: 2.5rem;
-    font-family: Crimson Pro,serif;
-    letter-spacing: 3px;
-    line-height: 20px;
-    color: var(--main-color);
-    opacity: 0.6;
-    display: none;
-    -webkit-text-stroke: 0 !important;
-}
-
 .title_eng_writing .sectionHead .enstr {display: block;}
 
 .sectionHead .desc {
