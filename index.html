@@ -1564,6 +1564,8 @@ document.addEventListener('DOMContentLoaded', function () {
     doubleTapAction: false,
     wheelToZoom: false,
 	allowPanToNext: true, 
+	  maxZoomLevel: 1,
+    secondaryZoomLevel: 1,
   });
 
 // $("html,body").css("overflow", "hidden");
@@ -1571,27 +1573,59 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelector(`body`).classList.add('not-prevent-zoom')
 document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 
-	const handheld = document.createElement(`meta`)
-    handheld.setAttribute('content', 'true')
-     handheld.setAttribute('name', 'HandheldFriendly')
+	// const handheld = document.createElement(`meta`)
+ //    handheld.setAttribute('content', 'true')
+ //     handheld.setAttribute('name', 'HandheldFriendly')
 
-    document.querySelector(`head`).appendChild(handheld)
+ //    document.querySelector(`head`).appendChild(handheld)
+
+	
+	lightbox.on('beforeOpen', () => {
+	const pswp = lightbox.pswp;
+  document.body.style.overflow = 'hidden';
+		pswp.options.pinchToClose = false;
+      pswp.options.closeOnVerticalDrag = false;
+});
 	
 lightbox.on('afterInit', () => {
   const pswp = lightbox.pswp;
-  pswp.on('change', () => {
-    const pz = pswp.currSlide.panZoom;
-    const orig = pz.applyTransform;
-    pz.applyTransform = function (x, y, scale) {
-      if (scale !== 1) scale = 1;
-      return orig.call(this, x, y, scale);
+
+	const lockZoom = () => {
+      if (pswp.currSlide) {
+        pswp.currSlide.zoomLevels = { initial: 1, secondary: 1, max: 1 };
+        pswp.currSlide.bounds.update();
+      }
     };
+
+		lockZoom();
+	   pswp.on('pointerDown', (e) => {
+      if (e.originalEvent.touches && e.originalEvent.touches.length > 1) {
+        e.preventDefault();  // 두 손가락 터치 차단
+      }
+    });
+    
+    pswp.on('pointerMove', (e) => {
+      if (e.originalEvent.touches && e.originalEvent.touches.length > 1) {
+        e.preventDefault();  // 두 손가락 드래그 차단
+      }
+    });
+
+	  pswp.on('zoomPanUpdate', (e) => {
+      if (pswp.currSlide.currZoomLevel > 1) {
+        e.preventDefault();
+        pswp.currSlide.zoomTo(1, {x: 0, y: 0}, 0);
+      }
+    });
+    
+    // transform 변경 시도를 감지
+    pswp.on('calcSlideSize', () => {
+      lockZoom();
+    });
   });
-});
 	
-	lightbox.on('beforeOpen', () => {
-  document.body.style.overflow = 'hidden';
+	
 });
+
 
 lightbox.on('close', () => {
   document.body.style.overflow = '';
