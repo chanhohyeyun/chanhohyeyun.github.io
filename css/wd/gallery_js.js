@@ -8,6 +8,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const counter = document.getElementById('counter');
     const thumbnails = document.querySelectorAll('.thumbnail');
+    const slideLinks = document.querySelectorAll('a.slide'); // <a> 태그 선택
     
     let currentIndex = 0;
     let images = [];
@@ -105,19 +106,39 @@
 
     // 이벤트 리스너 등록
     function attachEventListeners() {
-        // 썸네일 클릭
+        // <a> 태그 클릭 시 기본 동작 막고 모달 열기
+        slideLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // 링크 이동 차단
+                const img = link.querySelector('.thumbnail');
+                if (img) {
+                    const index = parseInt(img.dataset.index);
+                    openModal(index);
+                }
+            });
+        });
+
+        // 썸네일 직접 클릭 (혹시 모를 경우 대비)
         thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', () => {
+            thumb.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 openModal(parseInt(thumb.dataset.index));
             });
         });
 
         // 닫기 버튼
-        closeBtn.addEventListener('click', closeModal);
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
         
         // 이전/다음 버튼
-        prevBtn.addEventListener('click', prevImage);
-        nextBtn.addEventListener('click', nextImage);
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevImage);
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextImage);
+        }
 
         // 키보드 이벤트
         document.addEventListener('keydown', (e) => {
@@ -134,27 +155,29 @@
         });
 
         // 터치 이벤트
-        sliderWrapper.addEventListener('touchstart', handleStart, { passive: true });
-        sliderWrapper.addEventListener('touchmove', handleMove, { passive: true });
-        sliderWrapper.addEventListener('touchend', handleEnd, { passive: true });
+        if (sliderWrapper) {
+            sliderWrapper.addEventListener('touchstart', handleStart, { passive: true });
+            sliderWrapper.addEventListener('touchmove', handleMove, { passive: true });
+            sliderWrapper.addEventListener('touchend', handleEnd, { passive: true });
 
-        // 마우스 이벤트
-        sliderWrapper.addEventListener('mousedown', handleStart);
-        sliderWrapper.addEventListener('mousemove', handleMove);
-        sliderWrapper.addEventListener('mouseup', handleEnd);
-        sliderWrapper.addEventListener('mouseleave', handleEnd);
+            // 마우스 이벤트
+            sliderWrapper.addEventListener('mousedown', handleStart);
+            sliderWrapper.addEventListener('mousemove', handleMove);
+            sliderWrapper.addEventListener('mouseup', handleEnd);
+            sliderWrapper.addEventListener('mouseleave', handleEnd);
 
-        // 멀티터치 완전 차단
-        sliderWrapper.addEventListener('touchstart', (e) => {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+            // 멀티터치 완전 차단
+            sliderWrapper.addEventListener('touchstart', (e) => {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
 
-        // iOS 제스처 차단
-        ['gesturestart', 'gesturechange', 'gestureend'].forEach(evt => {
-            sliderWrapper.addEventListener(evt, (e) => e.preventDefault(), { passive: false });
-        });
+            // iOS 제스처 차단
+            ['gesturestart', 'gesturechange', 'gestureend'].forEach(evt => {
+                sliderWrapper.addEventListener(evt, (e) => e.preventDefault(), { passive: false });
+            });
+        }
     }
 
     // 초기화
@@ -164,8 +187,14 @@
             return;
         }
         
+        if (images.length === 0) {
+            console.error('이미지가 없습니다.');
+            return;
+        }
+        
         initSlider();
         attachEventListeners();
+        console.log('갤러리 초기화 완료:', images.length + '개 이미지');
     }
 
     // DOM 로드 후 실행
