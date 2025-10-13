@@ -282,8 +282,9 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
     <script type="text/javascript" src="http://w.theirmood.com/src/callWeb2App.js"></script>
 
 	<!-- PhotoSwipe JS -->
-<script src="/css/wd/photoswipe.umd.min.js"></script>
-<script src="/css/wd/photoswipe-lightbox.umd.min.js"></script>
+<!-- <script src="/css/wd/photoswipe.umd.min.js"></script>
+<script src="/css/wd/photoswipe-lightbox.umd.min.js"></script> -->
+<script src="/css/wd/gallery_js.js"></script>
 	
     <script>
         const mp_hname = '더블유스퀘어';
@@ -1518,21 +1519,21 @@ $(document).ready(function() {
 		<p class="sub-title kr svelte-wnxxjj" style= "font-family :Gowun Dodum";>사진을 탭하면 더 크게 볼 수 있습니다.</p></div>
 	<div id="gallery" class="svelte-wnxxjj">
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_1.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_1.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_1.jpg" data-index="0"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_2.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_2.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_2.jpg" data-index="1"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_3.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_3.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_3.jpg" data-index="2"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_5.jpg" data-pswp-width="2000" data-pswp-height="1333">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_5.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_5.jpg" data-index="3"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_4.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_4.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_4.jpg" data-index="4"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_12.jpg" data-pswp-width="2000" data-pswp-height="1333">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_12.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_12.jpg" data-index="5"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_7.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_7.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_7.jpg" data-index="6"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_6.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_6.jpg"></a>
+			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_6.jpg" data-index="7"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_11.jpg" data-pswp-width="1200" data-pswp-height="1790">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_11.jpg"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_13.jpg" data-pswp-width="1200" data-pswp-height="1790">
@@ -1548,7 +1549,16 @@ $(document).ready(function() {
 	</div>
 </section>
 
-<script>
+<div class="modal" id="imageModal">
+        <button class="close-btn" id="closeBtn"></button>
+        <div class="counter" id="counter">1 / 14</div>
+        <button class="nav-btn prev" id="prevBtn"></button>
+        <button class="nav-btn next" id="nextBtn"></button>
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper"></div>
+        </div>
+    </div>
+<!-- <script>
 	
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = new PhotoSwipeLightbox({
@@ -1672,7 +1682,7 @@ lightbox.on('close', () => {
 
 
 });
-</script>
+</script> -->
 
 
 <!---------------------------------------------
