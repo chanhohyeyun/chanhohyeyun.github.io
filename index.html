@@ -1567,15 +1567,19 @@ lightbox.on('close', () => {
   document.body.style.overflow = '';
 });
 
-	lightbox.on('afterInit', () => {
-  const pswpEl = document.querySelector('.pswp');
+  lightbox.on('afterInit', () => {
+    const pswp = lightbox.pswp;
 
-  if (pswpEl) {
-    pswpEl.addEventListener('touchmove', e => {
-      if (e.touches.length > 1) e.preventDefault(); // ✅ 두 손가락 확대 방지
-    }, { passive: false });
-  }
-});
+    // 줌 시도 차단
+    pswp.on('zoomPanUpdate', () => {
+      pswp.element.classList.remove('pswp--zoomed-in', 'pswp--zoom-allowed', 'pswp--click-to-zoom');
+    });
+
+    pswp.on('afterZoomTo', () => {
+      pswp.currSlide.panZoom.zoomTo(1, { animate: false });
+    });
+  });
+
 	
 // lightbox.on('afterInit', () => {
 //   const pswp = lightbox.pswp;
