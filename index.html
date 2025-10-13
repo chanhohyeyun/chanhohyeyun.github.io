@@ -1549,6 +1549,13 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelector(`body`).classList.add('not-prevent-zoom')
 document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 
+	const handheld = document.createElement(`meta`)
+    handheld.setAttribute('content', 'true')
+     handheld.setAttribute('name', 'HandheldFriendly')
+
+    document.querySelector(`head`).appendChild(handheld)
+
+	
 	lightbox.on('beforeOpen', () => {
   document.body.style.overflow = 'hidden';
 });
