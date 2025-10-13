@@ -1557,7 +1557,18 @@ document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=d
      handheld.setAttribute('name', 'HandheldFriendly')
 
     document.querySelector(`head`).appendChild(handheld)
-
+	
+lightbox.on('afterInit', () => {
+  const pswp = lightbox.pswp;
+  pswp.on('change', () => {
+    const pz = pswp.currSlide.panZoom;
+    const orig = pz.applyTransform;
+    pz.applyTransform = function (x, y, scale) {
+      if (scale !== 1) scale = 1;
+      return orig.call(this, x, y, scale);
+    };
+  });
+});
 	
 	lightbox.on('beforeOpen', () => {
   document.body.style.overflow = 'hidden';
@@ -1567,18 +1578,6 @@ lightbox.on('close', () => {
   document.body.style.overflow = '';
 });
 
-  lightbox.on('afterInit', () => {
-    const pswp = lightbox.pswp;
-
-    // 줌 시도 차단
-    pswp.on('zoomPanUpdate', () => {
-      pswp.element.classList.remove('pswp--zoomed-in', 'pswp--zoom-allowed', 'pswp--click-to-zoom');
-    });
-
-    pswp.on('afterZoomTo', () => {
-      pswp.currSlide.panZoom.zoomTo(1, { animate: false });
-    });
-  });
 
 	
 // lightbox.on('afterInit', () => {
