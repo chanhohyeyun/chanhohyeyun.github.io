@@ -128,18 +128,47 @@
             });
         });
 
-        // 닫기 버튼
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
+    // 닫기 버튼
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();  // ✅ 여기 수정
+            closeModal();
+        });
+    }
+    
+    // 이전/다음 버튼
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();  // ✅ 여기 수정
+            prevImage();
+        });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();  // ✅ 여기 수정
+            nextImage();
+        });
+    }
+
+    // 모달 배경 클릭
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) { // ✅ 실제 배경만 감지
+            closeModal();
         }
+    });
         
-        // 이전/다음 버튼
-        if (prevBtn) {
-            prevBtn.addEventListener('click', prevImage);
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', nextImage);
-        }
+        // // 닫기 버튼
+        // if (closeBtn) {
+        //     closeBtn.addEventListener('click', closeModal);
+        // }
+        
+        // // 이전/다음 버튼
+        // if (prevBtn) {
+        //     prevBtn.addEventListener('click', prevImage);
+        // }
+        // if (nextBtn) {
+        //     nextBtn.addEventListener('click', nextImage);
+        // }
 
         // 키보드 이벤트
         document.addEventListener('keydown', (e) => {
@@ -150,10 +179,10 @@
             if (e.key === 'ArrowRight') nextImage();
         });
 
-        // 배경 클릭시 닫기
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
+        // // 배경 클릭시 닫기
+        // modal.addEventListener('click', (e) => {
+        //     if (e.target === modal) closeModal();
+        // });
 
         // 터치 이벤트
         if (sliderWrapper) {
