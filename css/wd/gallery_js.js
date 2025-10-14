@@ -15,7 +15,7 @@
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
-
+    let hasMoved = false; 
     // 이미지 배열 생성
     thumbnails.forEach(thumb => {
         images.push(thumb.src);
@@ -65,45 +65,93 @@
     }
 
     // 터치/마우스 이벤트 (스와이프)
-    function handleStart(e) {
-        isDragging = true;
-        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    // function handleStart(e) {
+    //     isDragging = true;
+    //     startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         
-        // 멀티터치 차단
+    //     // 멀티터치 차단
+    //     if (e.touches && e.touches.length > 1) {
+    //         isDragging = false;
+    //         return;
+    //     }
+    // }
+
+    // function handleMove(e) {
+    //     if (!isDragging) return;
+        
+    //     // 멀티터치 차단
+    //     if (e.touches && e.touches.length > 1) {
+    //         isDragging = false;
+    //         return;
+    //     }
+        
+    //     currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    // }
+
+    // function handleEnd() {
+    //     if (!isDragging) return;
+        
+    //     const diff = startX - currentX;
+        
+    //     if (Math.abs(diff) > 50) {
+    //         if (diff > 0) {
+    //             nextImage();
+    //         } else {
+    //             prevImage();
+    //         }
+    //     }
+        
+    //     isDragging = false;
+    // }
+
+    function handleStart(e) {
+    isDragging = true;
+    hasMoved = false;  // 드래그 시작 시 초기화
+    startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+
+    // 멀티터치 차단
         if (e.touches && e.touches.length > 1) {
-            isDragging = false;
-            return;
+        isDragging = false;
+        return;
         }
     }
 
     function handleMove(e) {
-        if (!isDragging) return;
-        
-        // 멀티터치 차단
+    if (!isDragging) return;
+
+    // 멀티터치 차단
         if (e.touches && e.touches.length > 1) {
-            isDragging = false;
-            return;
-        }
-        
-        currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-    }
-
-    function handleEnd() {
-        if (!isDragging) return;
-        
-        const diff = startX - currentX;
-        
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                nextImage();
-            } else {
-                prevImage();
-            }
-        }
-        
         isDragging = false;
+        return;
+        }
+
+    currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    hasMoved = true;  // 실제로 이동 발생 -> 드래그임을 표시
+    }
+    
+    function handleEnd() {
+    if (!isDragging) return;
+
+    if (!hasMoved) {
+        // 클릭만 한 경우, 슬라이드 이동 안 함
+        isDragging = false;
+        return;
     }
 
+    const diff = startX - currentX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            nextImage();
+        } else {
+            prevImage();
+        }
+    }
+
+    isDragging = false;
+}
+
+    
     // 이벤트 리스너 등록
     function attachEventListeners() {
         // <a> 태그 클릭 시 기본 동작 막고 모달 열기
