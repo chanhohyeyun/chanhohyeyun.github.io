@@ -110,6 +110,7 @@
         slideLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault(); // 링크 이동 차단
+                e.stopPropagation();
                 const img = link.querySelector('.thumbnail');
                 if (img) {
                     const index = parseInt(img.dataset.index);
