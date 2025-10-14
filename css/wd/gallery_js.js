@@ -113,7 +113,10 @@
                 e.stopPropagation();
                 const img = link.querySelector('.thumbnail');
                 if (img) {
+                    
                     const index = parseInt(img.dataset.index);
+                    console.log('갤러리 링크 클릭:',index + '이미지');
+
                     openModal(index);
                 }
             });
@@ -124,7 +127,10 @@
             thumb.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                
                 openModal(parseInt(thumb.dataset.index));
+                console.log('갤러리 썸네일 클릭:',parseInt(thumb.dataset.index) + '이미지');
+
             });
         });
 
