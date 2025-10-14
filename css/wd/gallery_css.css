@@ -221,10 +221,10 @@ body {
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
-    #gallery {
+    /* #gallery {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 8px;
-    }
+    } */
 
     .thumbnail {
         height: 100px;
