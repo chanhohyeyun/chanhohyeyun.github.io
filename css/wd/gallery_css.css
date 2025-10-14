@@ -10,7 +10,7 @@ body {
 }
 
 /* 갤러리 섹션 */
-.gallery {
+/* .gallery {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -20,9 +20,9 @@ body {
     text-align: center;
     padding: 10px 0;
     margin-bottom: 20px;
-}
+} */
 
-.enstr {
+/* .enstr {
     font-size: 32px;
     font-weight: bold;
     color: #333;
@@ -36,14 +36,14 @@ body {
 .sub-title {
     color: #666;
     font-size: 14px;
-}
+} */
 
 /* 갤러리 그리드 */
-#gallery {
+/* #gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
-} */
+} */ */
 
 .thumbnail {
     width: 100%;
