@@ -286,7 +286,7 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
 	<!-- PhotoSwipe JS -->
 <!-- <script src="/css/wd/photoswipe.umd.min.js"></script>
 <script src="/css/wd/photoswipe-lightbox.umd.min.js"></script> -->
-<!-- <script src="/css/wd/gallery_js.js"></script> -->
+<script src="/css/wd/gallery_js.js" defer></script>
 	
     <script>
         const mp_hname = '더블유스퀘어';
@@ -1561,9 +1561,7 @@ $(document).ready(function() {
             <div class="slider-wrapper" id="sliderWrapper"></div>
         </div>
     </div>
-			
-<script src="/css/wd/gallery_js.js"></script>
-	
+				
 <!-- <script>
 	
 document.addEventListener('DOMContentLoaded', function () {
@@ -1733,118 +1731,118 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
-function zoomGallClose() {
+// function zoomGallClose() {
 
-    $(".zoomGallWrapper").css("display", "");
+//     $(".zoomGallWrapper").css("display", "");
 
-    $("html,body").css("overflow", "visible");
-    $(window).scrollTop(g_posY);
+//     $("html,body").css("overflow", "visible");
+//     $(window).scrollTop(g_posY);
 
-    if(fullboxSwiper != null) {
-        fullboxSwiper.destroy(true, true)
-        fullboxSwiper = null
-    }
+//     if(fullboxSwiper != null) {
+//         fullboxSwiper.destroy(true, true)
+//         fullboxSwiper = null
+//     }
 
-        document.querySelector(`body`).classList.remove('not-prevent-zoom')
-    document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes')
-    document.querySelector(`meta[name='HandheldFriendly'][content='true']`)?.remove()
+//         document.querySelector(`body`).classList.remove('not-prevent-zoom')
+//     document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes')
+//     document.querySelector(`meta[name='HandheldFriendly'][content='true']`)?.remove()
     
     
-}
-function zoomGallOpen(imgNumb) {
+// }
+// function zoomGallOpen(imgNumb) {
 
-    history.pushState(null, null, "#");
+//     history.pushState(null, null, "#");
 
-    g_posY = $(window).scrollTop();
-    $("html,body").css("overflow", "hidden");
+//     g_posY = $(window).scrollTop();
+//     $("html,body").css("overflow", "hidden");
 
-    $(".zoomGallWrapper").css("display", "block");
+//     $(".zoomGallWrapper").css("display", "block");
 
-            console.log(imgNumb)
-    if(fullboxSwiper==null){
-        fullboxSwiper = new Swiper("#fullbox", {
-                            pagination: {
-                el: "#fullbox .swiper-pagination",
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: "#fullbox .swiper-button-next",
-                prevEl: "#fullbox .swiper-button-prev",
-            },
-            observer: true,
-            observeParents: true,
-            loop: true,
-            on: {
+//             console.log(imgNumb)
+//     if(fullboxSwiper==null){
+//         fullboxSwiper = new Swiper("#fullbox", {
+//                             pagination: {
+//                 el: "#fullbox .swiper-pagination",
+//                 dynamicBullets: true,
+//             },
+//             navigation: {
+//                 nextEl: "#fullbox .swiper-button-next",
+//                 prevEl: "#fullbox .swiper-button-prev",
+//             },
+//             observer: true,
+//             observeParents: true,
+//             loop: true,
+//             on: {
 
-                slideChange : function() {
-                    const popImgList = document.querySelectorAll(`#fullbox [data-swiper-slide-index] img`)
-                    popImgList.forEach((item, index) => {
-                        const p = item.parentElement.parentElement
-                        if (
-                            p.classList.contains('swiper-slide-prev') ||
-                            p.classList.contains('swiper-slide-next') ||
-                            p.classList.contains('swiper-slide-active')
-                        ) {
-                            item.style.display = ''
-                        } else {
-                            item.style.display = 'none'
-                        }
-                    })
-                    // var numb = this.activeIndex;
-                    // var s = $("#fullbox .swiper-wrapper .swiper-slide").eq(numb).find("img.imgblk.rs").attr('src');
-                    // if(!s) {
-                    //     s = ''
-                    // }
-                    // let bs = s.replace(/\?.*$/, '?f=webp&w=1280');
-                    // if(bs.includes('-crop')) {
-                    //     bs = bs.replace(/-crop-[^.]+\.webp$/, "-resize.webp?f=webp&w=1280");
-                    //     bs = bs.replace(/-crop-[^.]+\.jpg$/, "-resize.jpg?f=webp&w=1280");
-                    //     bs = bs.replace(/-crop-[^.]+\.jpeg$/, "-resize.jpeg?f=webp&w=1280");
-                    //     bs = bs.replace(/-crop-[^.]+\.png$/, "-resize.png?f=webp&w=1280");
-                    // }
-                    // // console.log(bs)
-                    //
-                    // // if(typeof s == "undefined" || s == null || s == "") { return; } // 이미 변환된 이미지
-                    // // const parts = s.split(/[\\\/]/)
-                    // // var bs = s.replace(/\/([^/]+)-[^.]+\.(jpg|png|jpeg|webp|JPG)/, "/$1-resize.$2");
-                    // // bs = bs.replaceAll('-crop', '')
-                    //
-                    //
-                    // $("#fullbox .swiper-wrapper .swiper-slide:nth-child("+(numb+1)+") img.imgblk").removeClass("rs");
-                    // if(bs == s) { return; } // 같은 이미지
-                    // $("#fullbox .swiper-wrapper .swiper-slide:nth-child("+(numb+1)+") img.imgblk").attr('src', bs);
+//                 slideChange : function() {
+//                     const popImgList = document.querySelectorAll(`#fullbox [data-swiper-slide-index] img`)
+//                     popImgList.forEach((item, index) => {
+//                         const p = item.parentElement.parentElement
+//                         if (
+//                             p.classList.contains('swiper-slide-prev') ||
+//                             p.classList.contains('swiper-slide-next') ||
+//                             p.classList.contains('swiper-slide-active')
+//                         ) {
+//                             item.style.display = ''
+//                         } else {
+//                             item.style.display = 'none'
+//                         }
+//                     })
+//                     // var numb = this.activeIndex;
+//                     // var s = $("#fullbox .swiper-wrapper .swiper-slide").eq(numb).find("img.imgblk.rs").attr('src');
+//                     // if(!s) {
+//                     //     s = ''
+//                     // }
+//                     // let bs = s.replace(/\?.*$/, '?f=webp&w=1280');
+//                     // if(bs.includes('-crop')) {
+//                     //     bs = bs.replace(/-crop-[^.]+\.webp$/, "-resize.webp?f=webp&w=1280");
+//                     //     bs = bs.replace(/-crop-[^.]+\.jpg$/, "-resize.jpg?f=webp&w=1280");
+//                     //     bs = bs.replace(/-crop-[^.]+\.jpeg$/, "-resize.jpeg?f=webp&w=1280");
+//                     //     bs = bs.replace(/-crop-[^.]+\.png$/, "-resize.png?f=webp&w=1280");
+//                     // }
+//                     // // console.log(bs)
+//                     //
+//                     // // if(typeof s == "undefined" || s == null || s == "") { return; } // 이미 변환된 이미지
+//                     // // const parts = s.split(/[\\\/]/)
+//                     // // var bs = s.replace(/\/([^/]+)-[^.]+\.(jpg|png|jpeg|webp|JPG)/, "/$1-resize.$2");
+//                     // // bs = bs.replaceAll('-crop', '')
+//                     //
+//                     //
+//                     // $("#fullbox .swiper-wrapper .swiper-slide:nth-child("+(numb+1)+") img.imgblk").removeClass("rs");
+//                     // if(bs == s) { return; } // 같은 이미지
+//                     // $("#fullbox .swiper-wrapper .swiper-slide:nth-child("+(numb+1)+") img.imgblk").attr('src', bs);
 
-                }
-            }
-        });
+//                 }
+//             }
+//         });
 
-        $(".zoomGallWrapper .close").click(zoomGallClose);
+//         $(".zoomGallWrapper .close").click(zoomGallClose);
 
-    }
+//     }
 
-    if(imgNumb) {
-        let cnt = 0
-        while(fullboxSwiper.slideTo(parseInt(imgNumb), 100)) {
-            if(cnt > 3) {
-                break
-            }
-            cnt++
-        }
-    }
+//     // if(imgNumb) {
+//     //     let cnt = 0
+//     //     while(fullboxSwiper.slideTo(parseInt(imgNumb), 100)) {
+//     //         if(cnt > 3) {
+//     //             break
+//     //         }
+//     //         cnt++
+//     //     }
+//     // }
 
 
 
-            document.querySelector(`body`).classList.add('not-prevent-zoom')
+//             document.querySelector(`body`).classList.add('not-prevent-zoom')
 
-        document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+//         document.querySelector(`meta[name='viewport']`).setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 
-        const handheld = document.createElement(`meta`)
-        handheld.setAttribute('content', 'true')
-        handheld.setAttribute('name', 'HandheldFriendly')
+//         const handheld = document.createElement(`meta`)
+//         handheld.setAttribute('content', 'true')
+//         handheld.setAttribute('name', 'HandheldFriendly')
 
-        document.querySelector(`head`).appendChild(handheld)
+//         document.querySelector(`head`).appendChild(handheld)
 
-    }
+//     }
 
 	
 
