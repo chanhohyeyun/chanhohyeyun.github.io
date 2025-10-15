@@ -50,6 +50,13 @@
     function updateSlider() {
         sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
         counter.textContent = `${currentIndex + 1} / ${images.length}`;
+
+        // 마지막 슬라이드 자연스럽게 loop
+        sliderWrapper.addEventListener('transitionend', function handler() {
+        sliderWrapper.style.transition = 'none';
+        sliderWrapper.removeEventListener('transitionend', handler);
+        });
+        
     }
 
     // 이전 이미지
