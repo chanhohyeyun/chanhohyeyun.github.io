@@ -53,8 +53,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/wd/photoswipe.css">
 <link rel="stylesheet" href="/css/wd/gallery_css.css"/>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/plugin/advancedFormat.min.js"></script>
 
@@ -2447,17 +2447,6 @@ $(document).ready(function(){
 <script style="text/javascript" src="/css/wd/card.show.js?time=36"></script>
 <script style="text/javascript" src="/css/wd/card.show.opening.js?time=36"></script>
 	
- <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/dayjs.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/locale/ko.min.js"></script>
-	
-  <script>
-    dayjs.locale('ko');
-    if($("#calander").is(":visible")) {
-      initCalander();
-    }
-  </script>
-	
-	
 <!-- <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" loading="lazy"></script>
 <script>
@@ -2517,50 +2506,48 @@ var bgeffSnow = false;
 
 function initCalander() {
 
-    // var lastDate = moment('2026-01-01').locale('ko');
-    // var lastDay = parseInt(lastDate.endOf('month').format('D'));
+    var lastDate = moment('2026-01-01').locale('ko');
+    var lastDay = parseInt(lastDate.endOf('month').format('D'));
 
-    // //console.log("lastDate:"+lastDate.format());
-    // //console.log("lastDay:"+lastDay);
+    //console.log("lastDate:"+lastDate.format());
+    //console.log("lastDay:"+lastDay);
 
-    // var week = new Array(0, 1, 2, 3, 4, 5, 6);
-    // var marriedDate = new moment('2026-01-01').locale('ko').day();
-    // var todayLabel = week[marriedDate];
-    dayjs.locale('ko');
+    var week = new Array(0, 1, 2, 3, 4, 5, 6);
+    var marriedDate = new moment('2026-01-01').locale('ko').day();
+    var todayLabel = week[marriedDate];
 
-    var lastDate = dayjs('2026-01-01');
-    var lastDay = lastDate.endOf('month').date(); // 31
-    var startDay = lastDate.day(); // 0=일요일, 1=월요일, ... 4=목요일
+	var dday = '10';
 
-    var dday = 10; // 표시할 D-day
-    var html = '';
-    var dateNum = 1; // 달력에 넣을 날짜
-
-    for (var i = 0; i < 6; i++) { // 최대 6주
-      html += '<tr>';
-      for (var j = 0; j < 7; j++) { // 일~토
-        if (i === 0 && j < startDay) {
-          // 첫 주 빈 칸
-          html += '<td></td>';
-        } else if (dateNum > lastDay) {
-          // 마지막 날짜 이후 빈 칸
-          html += '<td></td>';
-        } else {
-          // 날짜 표시
-          if (dateNum === dday) {
-            html += '<td><span class="dday">' + dateNum + '</span></td>';
-          } else {
-            html += '<td>' + dateNum + '</td>';
-          }
-          dateNum++;
+    var c = '';
+    var j = 0;
+    var r = 1;
+    var end = (lastDay+todayLabel);
+    for(var i=1;i<=end;i++) {
+        if(j==0||j%7==0) {
+            if(j==0) {
+                c += '<tr>';
+            }else{
+                c += '</tr><tr>';
+            }
         }
-      }
-      html += '</tr>';
-      if (dateNum > lastDay) break; // 모든 날짜 채우면 루프 종료
+        if(todayLabel>0) {
+            todayLabel--;
+            c += '<td></td>';
+        }else{
+            if(dday==r) {
+                c += '<td><span class="dday">'+r+'</span></td>';
+            }else{
+                c += '<td class="cal_tr_td_'+r+'">'+r+'</td>';
+            }
+
+            r++;
+        }
+
+        j++;
     }
+    c += '</tr>';
 
-
-    $("#calander tbody").html(html);
+    $("#calander tbody").html(c);
 }
 
 
