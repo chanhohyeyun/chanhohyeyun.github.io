@@ -54,9 +54,10 @@
 <link rel="stylesheet" href="/css/wd/photoswipe.css">
 <link rel="stylesheet" href="/css/wd/gallery_css.css"/>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script>
-	
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/dayjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/locale/ko.min.js"></script>
 
 <!-- viewportChecker (스크롤 애니메이션용) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-viewport-checker/1.8.8/jquery.viewportchecker.min.js"></script>
@@ -1541,18 +1542,18 @@ $(document).ready(function() {
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_3.jpg" data-index="2"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_5.jpg" data-pswp-width="2000" data-pswp-height="1333">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_5.jpg" data-index="3"></a>
-		<a class="slide svelte-wnxxjj top-align" target="_blank" href="/res/img/gallery_4.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_4.jpg" data-index="4"></a>
+		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_4.jpg" data-pswp-width="1200" data-pswp-height="1800">
+			<img class="thumbnail svelte-wnxxjj top-align" alt="" src="/res/img/gallery_4.jpg" data-index="4"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_12.jpg" data-pswp-width="2000" data-pswp-height="1333">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_12.jpg" data-index="5"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_7.jpg" data-pswp-width="1200" data-pswp-height="1800">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_7.jpg" data-index="6"></a>
-		<a class="slide svelte-wnxxjj top-align" target="_blank" href="/res/img/gallery_6.jpg" data-pswp-width="1200" data-pswp-height="1800">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_6.jpg" data-index="7"></a>
+		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_6.jpg" data-pswp-width="1200" data-pswp-height="1800">
+			<img class="thumbnail svelte-wnxxjj top-align" alt="" src="/res/img/gallery_6.jpg" data-index="7"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_11.jpg" data-pswp-width="1200" data-pswp-height="1790">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_11.jpg" data-index="8" ></a>
-		<a class="slide svelte-wnxxjj top-align" target="_blank" href="/res/img/gallery_13.jpg" data-pswp-width="1200" data-pswp-height="1790">
-			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_13.jpg"  data-index="9"></a>
+		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_13.jpg" data-pswp-width="1200" data-pswp-height="1790">
+			<img class="thumbnail svelte-wnxxjj top-align" alt="" src="/res/img/gallery_13.jpg"  data-index="9"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_9.jpg" data-pswp-width="1200" data-pswp-height="1800">
 			<img class="thumbnail svelte-wnxxjj" alt="" src="/res/img/gallery_9.jpg"  data-index="10"></a>
 		<a class="slide svelte-wnxxjj" target="_blank" href="/res/img/gallery_10.jpg" data-pswp-width="1200" data-pswp-height="1800">
@@ -2507,31 +2508,26 @@ var bgeffSnow = false;
 // 캘린더
 
 function initCalander() {
-/*
-    let lastDate = new Date('2025', '9', 0);
-    var lastDay = lastDate.getDate();
 
-    console.log("lastDate:"+lastDate.getDay());
-    console.log("lastDay:"+lastDay);
+    // var lastDate = moment('2026-01-01').locale('ko');
+    // var lastDay = parseInt(lastDate.endOf('month').format('D'));
 
-    var week = new Array(0, 1, 2, 3, 4, 5, 6);
-    var marriedDate = new Date('2025-09-01').getDay();
-    var todayLabel = week[marriedDate];
+    // //console.log("lastDate:"+lastDate.format());
+    // //console.log("lastDay:"+lastDay);
 
-    console.log(marriedDate);
-    console.log(todayLabel);
-*/
+    // var week = new Array(0, 1, 2, 3, 4, 5, 6);
+    // var marriedDate = new moment('2026-01-01').locale('ko').day();
+    // var todayLabel = week[marriedDate];
 
-    var lastDate = moment('2026-01-01').locale('ko');
-    var lastDay = parseInt(lastDate.endOf('month').format('D'));
+	var lastDate = dayjs('2026-01-01');
 
-    //console.log("lastDate:"+lastDate.format());
-    //console.log("lastDay:"+lastDay);
+// 마지막 날짜 구하기
+	var lastDay = lastDate.endOf('month').date(); // endOf('month') + date() → 마지막 일자
 
-    var week = new Array(0, 1, 2, 3, 4, 5, 6);
-    var marriedDate = new moment('2026-01-01').locale('ko').day();
-    var todayLabel = week[marriedDate];
-
+// 요일 구하기
+	var week = [0, 1, 2, 3, 4, 5, 6];
+	var marriedDate = lastDate.day(); // 0=일요일, 1=월요일, ...
+	var todayLabel = week[marriedDate];
 
     var dday = '10';
 
