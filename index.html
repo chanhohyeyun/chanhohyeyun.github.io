@@ -55,8 +55,7 @@
 <link rel="stylesheet" href="/css/wd/gallery_css.css"/>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/dayjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/locale/ko.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/plugin/advancedFormat.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -1506,7 +1505,12 @@ $(document).ready(function() {
 	
 </div>
 
-
+  <script>
+    dayjs.locale('ko');
+    if($("#calander").is(":visible")) {
+      initCalander();
+    }
+  </script>
 	
 	
         <div class="sectionMg gallLayerWrapper layer layer03 clearfix">
@@ -2476,7 +2480,8 @@ var bgeffSnow = false;
 </script> -->
 
 
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/dayjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.12.0/locale/ko.min.js"></script>
 <script>
 
 //=============================================
@@ -2507,6 +2512,7 @@ var bgeffSnow = false;
 
 //=============================================
 // 캘린더
+	
 
 function initCalander() {
 
@@ -2519,7 +2525,7 @@ function initCalander() {
     // var week = new Array(0, 1, 2, 3, 4, 5, 6);
     // var marriedDate = new moment('2026-01-01').locale('ko').day();
     // var todayLabel = week[marriedDate];
-    // dayjs.locale('ko');
+    dayjs.locale('ko');
 
     var lastDate = dayjs('2026-01-01');
     var lastDay = lastDate.endOf('month').date(); // 31
@@ -2556,16 +2562,6 @@ function initCalander() {
     $("#calander tbody").html(c);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-      if (typeof dayjs !== 'undefined') {
-          dayjs.locale('ko');
-		   if($("#calander").is(":visible")) {
-          initCalander(); // 달력 초기화 함수
-		   }
-      } else {
-          console.error('Day.js가 아직 로드되지 않았습니다!');
-      }
-  });
 
 //=============================================
 // 카톡 초대장 보내기
