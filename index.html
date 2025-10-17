@@ -2522,46 +2522,37 @@ function initCalander() {
     // var todayLabel = week[marriedDate];
     dayjs.locale('ko');
 
-	var lastDate = dayjs('2026-01-01');
+    var lastDate = dayjs('2026-01-01');
+    var lastDay = lastDate.endOf('month').date(); // 31
+    var startDay = lastDate.day(); // 0=일요일, 1=월요일, ... 4=목요일
 
-// 마지막 날짜 구하기
-	var lastDay = lastDate.endOf('month').date(); // endOf('month') + date() → 마지막 일자
+    var dday = 10; // 표시할 D-day
+    var html = '';
+    var dateNum = 1; // 달력에 넣을 날짜
 
-// 요일 구하기
-	var week = [0, 1, 2, 3, 4, 5, 6];
-	var marriedDate = lastDate.day(); // 0=일요일, 1=월요일, ...
-	var todayLabel = week[marriedDate];
-
-    var dday = '10';
-
-    var c = '';
-    var j = 0;
-    var r = 1;
-    var end = (lastDay+todayLabel);
-    for(var i=1;i<=end;i++) {
-        if(j==0||j%7==0) {
-            if(j==0) {
-                c += '<tr>';
-            }else{
-                c += '</tr><tr>';
-            }
+    for (var i = 0; i < 6; i++) { // 최대 6주
+      html += '<tr>';
+      for (var j = 0; j < 7; j++) { // 일~토
+        if (i === 0 && j < startDay) {
+          // 첫 주 빈 칸
+          html += '<td></td>';
+        } else if (dateNum > lastDay) {
+          // 마지막 날짜 이후 빈 칸
+          html += '<td></td>';
+        } else {
+          // 날짜 표시
+          if (dateNum === dday) {
+            html += '<td><span class="dday">' + dateNum + '</span></td>';
+          } else {
+            html += '<td>' + dateNum + '</td>';
+          }
+          dateNum++;
         }
-        if(todayLabel>0) {
-            todayLabel--;
-            c += '<td></td>';
-        }else{
-            if(dday==r) {
-                c += '<td><span class="dday">'+r+'</span></td>';
-            }else{
-                c += '<td class="cal_tr_td_'+r+'">'+r+'</td>';
-            }
-
-            r++;
-        }
-
-        j++;
+      }
+      html += '</tr>';
+      if (dateNum > lastDay) break; // 모든 날짜 채우면 루프 종료
     }
-    c += '</tr>';
+
 
     $("#calander tbody").html(c);
 }
