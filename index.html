@@ -1480,33 +1480,6 @@ $("#tel_popup .x_button").click(function(){
 </div>
 
 <script>
-	dayjs.locale('ko');
-
-    var lastDate = dayjs('2026-01-01');
-    var lastDay = lastDate.endOf('month').date();
-    var startDay = lastDate.day();
-
-    var dday = 10;
-    var html = '';
-    var dateNum = 1;
-
-    for (var i = 0; i < 6; i++) {
-      html += '<tr>';
-      for (var j = 0; j < 7; j++) {
-        if (i === 0 && j < startDay) html += '<td></td>';
-        else if (dateNum > lastDay) html += '<td></td>';
-        else {
-          if (dateNum === dday) html += '<td><span class="dday">' + dateNum + '</span></td>';
-          else html += '<td>' + dateNum + '</td>';
-          dateNum++;
-        }
-      }
-      html += '</tr>';
-      if (dateNum > lastDay) break;
-    }
-
-    document.querySelector('#calendar tbody').innerHTML = html;
-	
 $(document).ready(function() {
   var today = new Date();
   var yyyy = today.getFullYear();
@@ -2546,7 +2519,7 @@ function initCalander() {
     // var week = new Array(0, 1, 2, 3, 4, 5, 6);
     // var marriedDate = new moment('2026-01-01').locale('ko').day();
     // var todayLabel = week[marriedDate];
-    dayjs.locale('ko');
+    // dayjs.locale('ko');
 
     var lastDate = dayjs('2026-01-01');
     var lastDay = lastDate.endOf('month').date(); // 31
@@ -2582,29 +2555,17 @@ function initCalander() {
 
     $("#calander tbody").html(c);
 }
-	
-$(document).ready(function(){
-    if($("#calander").is(":visible")) {
-        // initCalander();
 
-        // $.ajax({
-        //     type : 'get',
-        //     data : {"date" : '2026-01-01'},
-        //     url : '/holiday',
-        //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        //     success : function(data){
-        //         //console.log(data);
-
-        //         $(data).each(function(idx,val){
-        //             //console.log(val.day);
-        //             $(".cal_tr_td_"+val.day).css("color", "var(--main-sun-day-color)");
-        //         });
-        //     }
-        // });
-    }
-});
-
-
+document.addEventListener('DOMContentLoaded', function() {
+      if (typeof dayjs !== 'undefined') {
+          dayjs.locale('ko');
+		   if($("#calander").is(":visible")) {
+          initCalander(); // 달력 초기화 함수
+		   }
+      } else {
+          console.error('Day.js가 아직 로드되지 않았습니다!');
+      }
+  });
 
 //=============================================
 // 카톡 초대장 보내기
