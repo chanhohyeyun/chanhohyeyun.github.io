@@ -1549,7 +1549,7 @@ $(document).ready(function() {
     </div> -->
 			
 <section class="gallery svelte-wnxxjj">
-	<div class="sectionHead anibox">
+	<div class="sectionHead anibox" style="padding-top:20px;">
     <div class="enstr">GALLERY</div>
     <!-- <span class="name">웨딩 갤러리</span> -->
 	</div>
@@ -2342,104 +2342,98 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
+	
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5n2TbcZVMZAW77p5TqDPFwqIVAqytPsuEhCf33RcNP5nzOQ02XKWwOWIK5uWRt7a-/exec';
 
-    <script>
-        // Google Apps Script Web App URL (배포 후 받은 URL로 교체)
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5n2TbcZVMZAW77p5TqDPFwqIVAqytPsuEhCf33RcNP5nzOQ02XKWwOWIK5uWRt7a-/exec';
-        
-        // 폼 제출
-        document.getElementById('guestbookForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const name = document.getElementById('name').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            if (!name || !message) return;
-            
-            // 버튼 비활성화
-            submitBtn.disabled = true;
-            submitBtn.textContent = '등록 중...';
-            
-            try {
-                // Google Sheets에 데이터 전송
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'add',
-                        name: name,
-                        message: message,
-                        timestamp: new Date().toISOString()
-                    })
-                });
-                
-                // 성공 메시지 표시
-                document.getElementById('successMessage').style.display = 'block';
-                
-                // 폼 초기화
-                document.getElementById('guestbookForm').reset();
-                
-                // 메시지 목록 새로고침
-                setTimeout(() => {
-                    loadMessages();
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 2000);
-                
-            } catch (error) {
-                alert('메시지 등록 중 오류가 발생했습니다.');
-                console.error(error);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '축하 메시지 남기기';
-            }
-        });
-        
-        // 메시지 목록 불러오기
-        async function loadMessages() {
-            const messagesList = document.getElementById('messagesList');
-            
-            try {
-                const response = await fetch(`${SCRIPT_URL}?action=get`);
-                const data = await response.json();
-                
-                if (data.length === 0) {
-                    messagesList.innerHTML = '<div class="loading">아직 등록된 메시지가 없습니다.</div>';
-                    return;
-                }
-                
-                messagesList.innerHTML = '';
-                
-                data.reverse().forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'message-card';
-                    
-                    const date = new Date(item.timestamp);
-                    const dateString = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
-                    
-                    card.innerHTML = `
-                        <div class="message-header">
-                            <span class="message-name">${item.name}</span>
-                            <span class="message-date">${dateString}</span>
-                        </div>
-                        <div class="message-text">${item.message}</div>
-                    `;
-                    
-                    messagesList.appendChild(card);
-                });
-                
-            } catch (error) {
-                messagesList.innerHTML = '<div class="loading">메시지를 불러올 수 없습니다.</div>';
-                console.error(error);
-            }
+    // ✅ 메시지 화면에 바로 추가 (새 기능)
+    function addMessageToUI(name, message, timestamp) {
+        const messagesList = document.getElementById('messagesList');
+        const card = document.createElement('div');
+        card.className = 'message-card';
+
+        const date = new Date(timestamp);
+        const dateString = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+
+        card.innerHTML = `
+            <div class="message-header">
+                <span class="message-name">${name}</span>
+                <span class="message-date">${dateString}</span>
+            </div>
+            <div class="message-text">${message}</div>
+        `;
+
+        // 최신 메시지가 위에 오도록 prepend
+        messagesList.prepend(card);
+    }
+
+    // ✅ 폼 제출 개선
+    document.getElementById('guestbookForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('submitBtn');
+        const nameInput = document.getElementById('name');
+        const messageInput = document.getElementById('message');
+        const name = nameInput.value.trim();
+        const message = messageInput.value.trim();
+        const timestamp = new Date().toISOString();
+
+        if (!name || !message) return;
+
+        // 버튼 잠금
+        submitBtn.disabled = true;
+        submitBtn.textContent = '등록 중...';
+
+        // ✅ 바로 화면에 표시 (로딩 기다리지 않음)
+        addMessageToUI(name, message, timestamp);
+
+        // ✅ 폼 리셋 & 메시지 표시
+        document.getElementById('guestbookForm').reset();
+        document.getElementById('successMessage').style.display = 'block';
+
+        // ✅ Google Script 전송은 뒤에서 처리
+        try {
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'add',
+                    name,
+                    message,
+                    timestamp
+                })
+            });
+        } catch (error) {
+            console.error('전송 오류:', error);
         }
-        
-        // 페이지 로드시 메시지 불러오기
-        loadMessages();
-    </script>
+
+        // 완료 UI 처리
+        setTimeout(() => {
+            document.getElementById('successMessage').style.display = 'none';
+        }, 2000);
+        submitBtn.disabled = false;
+        submitBtn.textContent = '축하 메시지 남기기';
+    });
+
+    // 기존 메시지 불러오기 그대로 유지
+    async function loadMessages() {
+        const messagesList = document.getElementById('messagesList');
+        try {
+            const response = await fetch(`${SCRIPT_URL}?action=get`);
+            const data = await response.json();
+
+            messagesList.innerHTML = '';
+            data.reverse().forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
+        } catch {
+            messagesList.innerHTML = '<div class="loading">메시지를 불러올 수 없습니다.</div>';
+        }
+    }
+
+    loadMessages();
+</script>
 
     <!-- 하단 -->
     
@@ -2462,8 +2456,8 @@ $(document).ready(function(){
 
 
 <!-- 
-<script src="http://w.theirmood.com/src/moment/moment.js"></script><!-- moment --> -->
-<!-- <script src="http://w.theirmood.com/src/moment/moment-with-locales.js"></script><!-- moment locale --> -->
+<script src="http://w.theirmood.com/src/moment/moment.js"></script><!-- moment --> 
+<!-- <script src="http://w.theirmood.com/src/moment/moment-with-locales.js"></script><!-- moment locale -->
 <!-- <script src="http://w.theirmood.com/src/swiper/swiper-bundle.min.js?t=36"></script><!-- swiper --> 
 <!-- <script src="http://w.theirmood.com/src/fontawesome/js/fontawesome.min.js" loading="lazy"></script><!-- fontawesome --> 
 
@@ -2580,40 +2574,6 @@ $(document).ready(function(){
 });
 
 
-
-//=============================================
-// 카톡 초대장 보내기
-if($("#kakao-link-btn").is(":visible")) {
-    try{
-        //Kakao.init('672965c4b505451294a6ca90fcdfa643');
-
-        function sendLink() {
-            var t = $("input[name=kt_01]").val();
-            var d = $("input[name=kt_02]").val();
-
-            var kImg = 'https://images.theirmood.com/resources/84397/card/r4qUEmb8xF/rDl3Ngre7m.jpg?w=1280';
-            if(!kImg.includes('http')) {
-                kImg = "https://w.theirmood.com"+kImg;
-            }
-
-            Kakao.Share.sendCustom({
-            templateId: 52792,            templateArgs: {
-                idx: "r4qUEmb8xF",
-                img: kImg,
-                title: t,
-                description: d
-            },
-            })
-        }
-    }catch {
-
-    }
-
-}
-
-//=============================================
-// 식전영상
-//Youtube API 로드
 
 
 //=============================================
