@@ -453,6 +453,13 @@ ul.wayto li.li .n {font-size: 1.5rem; color: #000; letter-spacing: -.03em; margi
             margin-bottom: 15px;
             animation: fadeIn 0.5s;
         }
+		.no-message {
+ 		   	text-align: center;
+    		color: #888;
+    		padding: 20px 0;
+   			font-size: 14px;
+		}
+		
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -2336,6 +2343,8 @@ $(document).ready(function(){
     // ✅ 메시지 화면에 바로 추가 (새 기능)
     function addMessageToUI(name, message, timestamp) {
         const messagesList = document.getElementById('messagesList');
+		const noMsg = document.querySelector('.no-message');
+        if (noMsg) noMsg.remove();
         const card = document.createElement('div');
         card.className = 'message-card';
 
