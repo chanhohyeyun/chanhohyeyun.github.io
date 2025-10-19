@@ -2413,7 +2413,15 @@ $(document).ready(function(){
             const data = await response.json();
 
             messagesList.innerHTML = '';
-            data.reverse().forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
+ 
+		// ✅ 메시지가 없을 때 안내 문구 표시
+        if (!data || data.length === 0) {
+            messagesList.innerHTML = '<div class="no-message">아직 등록된 메세지가 없습니다.</div>';
+            return;
+        }
+            
+			data.reverse().forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
+			
         } catch {
             messagesList.innerHTML = '<div class="loading">메시지를 불러올 수 없습니다.</div>';
         }
