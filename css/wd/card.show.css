@@ -3736,6 +3736,35 @@ ul.wayto .navi_button {
     height: 40px;
     border-radius: 8px;
 }
+
+ .locp_button {
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #cacaca;
+    border-radius: 15px;
+    margin: 0 3px;
+    border: 1px solid #eaeaea;
+    height: 57px;
+    width: 33.333%;
+    background: #fff;
+    border-radius: 12px;
+    height: 40px;
+    border-radius: 8px;
+}
 ul.wayto .navi_button > span {
     font-weight: 500;
     color: #000;
@@ -3744,6 +3773,13 @@ ul.wayto .navi_button > span {
     padding-left: 22px;
 }
 
+locp_button > span {
+    font-weight: 500;
+    color: #000;
+    position: relative;
+    font-size: 1.2rem;
+    padding-left: 22px;
+}
 
 
 ul.wayto .navi_button > span:before {
@@ -3765,6 +3801,18 @@ ul.wayto .navi_button:nth-child(3) > span:before {
     background-image: url(/res/img/ico_nav01.png);
 }
 
+.locp_button > span:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    background-image: url(/res/img/copy.svg);
+    background-size: 17px auto;
+    margin-top: -8.5px;
+}
 
 .ft-yeonsung ul.wayto .navi_button > span {
     font-size: 1.4rem;
