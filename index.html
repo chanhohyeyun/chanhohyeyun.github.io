@@ -1205,116 +1205,8 @@ $(".popAlert .background, .popAlert button").click(function(){
 });
 </script>
 
-<div id="tel_popup">
-    <a class="x_button">
-        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.86018 16.829L16.3455 8.34375" stroke="#cccccc" stroke-width="1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16.2431 16.7275L7.75781 8.24219" stroke="#cccccc" stroke-width="1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-    <div class="background"></div>
-
-    <div class="tp">
-                    <span class="ent">CONTACT</span>
-            <div>연락하기</div>
-            </div>
-
-    <div class="ctt">
-
-                                <div class="grd_wrap man">
-                <div class="grd_line">
-                    신랑측 <span class="ent">GROOM</span>
-                </div>
-                                <div class="grd">
-                    <span class="cell">신랑</span>
-                    <span class="cell name">
-                        <span>장진원</span>
-                        <span class="baptismal"></span>
-                    </span>
-                    <span class="cell">
-                        <a class="fa fa-phone-alt" href="tel:01021091657"></a>
-                        <a class="fa fa-envelope" href="sms:01021091657"></a>
-                    </span>
-                </div>
-                                                <div class="grd">
-                    <span class="cell">신랑 아버지</span>
-                    <span class="cell name">
-                        <span></span>
-                        <span class="baptismal"></span>
-                    </span>
-                    <span class="cell">
-                        <a class="fa fa-phone-alt" href="tel:01088401656"></a>
-                        <a class="fa fa-envelope" href="sms:01088401656"></a>
-                    </span>
-                </div>
-                                                <div class="grd">
-                    <span class="cell">신랑 어머니</span>
-                    <span class="cell name">
-                        <span></span>
-                        <span class="baptismal"></span>
-                    </span>
-                    <span class="cell">
-                        <a class="fa fa-phone-alt" href="tel:01053691657"></a>
-                        <a class="fa fa-envelope" href="sms:01053691657"></a>
-                    </span>
-                </div>
-                            </div>
-                    
-                <div class="grd_wrap man">
-            <div class="grd_line">
-                신부측 <span class="ent">BRIDE</span>
-            </div>
-                        <div class="grd">
-                <span class="cell">신부</span>
-                <span class="cell name">
-                    <span>함시하</span>
-                    <span class="baptismal"></span>
-                </span>
-                <span class="cell">
-                    <a class="fa fa-phone-alt" href="tel:01080772077"></a>
-                    <a class="fa fa-envelope" href="sms:01080772077"></a>
-                </span>
-            </div>
-                                    <div class="grd">
-                <span class="cell">신부 아버지</span>
-                <span class="cell name">
-                    <span></span>
-                    <span class="baptismal"></span>
-                </span>
-                <span class="cell">
-                    <a class="fa fa-phone-alt" href="tel:01022293450"></a>
-                    <a class="fa fa-envelope" href="sms:01022293450"></a>
-                </span>
-            </div>
-                                    <div class="grd">
-                <span class="cell">신부 어머니</span>
-                <span class="cell name">
-                    <span></span>
-                    <span class="baptismal"></span>
-                </span>
-                <span class="cell">
-                    <a class="fa fa-phone-alt" href="tel:01042328999"></a>
-                    <a class="fa fa-envelope" href="sms:01042328999"></a>
-                </span>
-            </div>
-                    </div>
-        
-        
-
-
-    </div>
-</div>
-<script>
-$("#tel_popup .x_button").click(function(){
-    $("body").removeClass("pop_contact_open");
-    $('html,body').css("overflow", "");
-    window.scrollTo(0, WIN_SCR_TOP);
-});
-</script>
 
 <div class="pageCover clearfix single">
-
-    
 
 
     <style>
@@ -1322,14 +1214,6 @@ $("#tel_popup .x_button").click(function(){
             --custom-color: basic;
         }
     </style>
-
-
-
-
-
-
-
-
 
 
 
@@ -1996,7 +1880,9 @@ window.addEventListener('popstate', function(event) {
 
             <div class="location_wrapper anibox">
                 <div class="tbox emp">더블유스퀘어</div>
-                <div class="tbox" style="font-size: 1.5rem;">경기도 성남시 수정구 분당구 판교역로 226번길 16</div>
+                <textarea class="tbox" id="address" style="font-size: 1.5rem;">경기도 성남시 수정구 분당구 판교역로 226번길 16</textarea>
+				<a class="locp_button" onclick="copy_to_clipboard2('address')"><span>주소 복사</span></a>
+
                 <!-- <div class="tbox"><a class="tel" href="tel:043-241-0003">Tel. 043-241-0003</a></div> -->
                             </div>
         
