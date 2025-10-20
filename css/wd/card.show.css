@@ -3801,18 +3801,6 @@ ul.wayto .navi_button:nth-child(3) > span:before {
     background-image: url(/res/img/ico_nav01.png);
 }
 
-.locp_button > span:before {
-    display: block;
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 17px;
-    height: 17px;
-    background-image: url(/res/img/copy.svg);
-    background-size: 17px auto;
-    margin-top: -8.5px;
-}
 
 .ft-yeonsung ul.wayto .navi_button > span {
     font-size: 1.4rem;
