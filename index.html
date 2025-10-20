@@ -2452,7 +2452,12 @@ $(document).ready(function(){
             return;
         }
             
-			data.reverse().forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
+			//data.reverse().forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
+		// 🔹 타임스탬프 기준으로 최신순 정렬
+        data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        // 🔹 UI에 추가
+        data.forEach(item => addMessageToUI(item.name, item.message, item.timestamp));
 			
         } catch {
             messagesList.innerHTML = '<div class="loading">메시지를 불러올 수 없습니다.</div>';
