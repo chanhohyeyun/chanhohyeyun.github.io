@@ -3758,11 +3758,10 @@ ul.wayto .navi_button {
     border-radius: 15px;
     margin: 0 3px;
     border: 1px solid #eaeaea;
-    height: 57px;
-    width: 33.333%;
+    width: 25%;
     background: #fff;
     border-radius: 12px;
-    height: 40px;
+    height: 35px;
     border-radius: 8px;
 }
 ul.wayto .navi_button > span {
